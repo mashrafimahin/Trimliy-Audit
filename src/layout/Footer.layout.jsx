@@ -47,7 +47,7 @@ const data = {
       links: [
         {
           itemName: "About",
-          route: "",
+          route: "about",
         },
         {
           itemName: "Privacy",
