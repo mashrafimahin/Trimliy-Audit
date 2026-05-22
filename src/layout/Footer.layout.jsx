@@ -1,80 +1,97 @@
 // dependencies
+import { Link } from "react-router";
 // icons
 import { Link2 } from "lucide-react";
+// data
+const data = {
+  logo: {
+    bio: "The modern link management platform for forward-thinking teams. Shorten, track, and optimize every touchdowns.",
+  },
+  quickLinks: [
+    {
+      caption: "Product",
+      links: [
+        {
+          itemName: "Link Management",
+          route: "",
+        },
+        {
+          itemName: "QR Codes",
+          route: "",
+        },
+        {
+          itemName: "Link-in-bio",
+          route: "",
+        },
+      ],
+    },
+    {
+      caption: "Resources",
+      links: [
+        {
+          itemName: "Docs",
+          route: "",
+        },
+        {
+          itemName: "API",
+          route: "",
+        },
+        {
+          itemName: "Blog",
+          route: "",
+        },
+      ],
+    },
+    {
+      caption: "Company",
+      links: [
+        {
+          itemName: "About",
+          route: "",
+        },
+        {
+          itemName: "Privacy",
+          route: "",
+        },
+        {
+          itemName: "Terms",
+          route: "",
+        },
+      ],
+    },
+  ],
+};
 
 function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-navy-950 py-12 md:py-16 mt-20 relative z-10">
+    <footer className="border-t border-white/5 bg-navy-950 py-12 md:py-16 relative z-10">
       <div className="container mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-8">
+        {/* logo */}
         <div className="col-span-2">
-          <Link2 className="text-blue-500 w-6 h-6" />
-          <span className="text-xl font-bold text-white">Trimly</span>
-
+          <div className="flex items-center gap-3 mb-2">
+            <Link2 className="text-blue-500 w-6 h-6" />
+            <span className="text-2xl font-bold text-white">Trimly</span>
+          </div>
           <p className="text-slate-400 text-sm mb-6 max-w-sm">
-            The modern link management platform for forward-thinking teams.
-            Shorten, track, and optimize every touchdowns.
+            {data.logo.bio}
           </p>
         </div>
-        <div>
-          <h4 className="text-white font-medium mb-4">Product</h4>
-          <ul className="space-y-3 text-sm text-slate-400">
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Link Management
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                QR Codes
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Link-in-bio
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-white font-medium mb-4">Resources</h4>
-          <ul className="space-y-3 text-sm text-slate-400">
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Documentation
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                API
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Blog
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h4 className="text-white font-medium mb-4">Company</h4>
-          <ul className="space-y-3 text-sm text-slate-400">
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Privacy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-white transition-colors">
-                Terms
-              </a>
-            </li>
-          </ul>
-        </div>
+        {/* quick links */}
+        {data.quickLinks.map((item, index) => (
+          <div key={index}>
+            <h4 className="text-white font-medium mb-4">{item.caption}</h4>
+            <ul className="space-y-3 text-sm text-slate-400">
+              {item.links.map((elm) => (
+                <li
+                  key={elm.itemName}
+                  className="hover:text-white hover:underline transition-colors cursor-pointer"
+                >
+                  <Link to={`/${elm.route}`}>{elm.itemName}</Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </footer>
   );
