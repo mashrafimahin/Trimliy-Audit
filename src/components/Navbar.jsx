@@ -5,25 +5,8 @@ import { Link as InPageScroll } from "react-scroll";
 import { Link2 } from "lucide-react";
 // components
 import Button from "./Button";
-// nav menu
-const menu = [
-  {
-    caption: "Features",
-    route: "features",
-  },
-  {
-    caption: "Analytics",
-    route: "",
-  },
-  {
-    caption: "Pricing",
-    route: "pricing",
-  },
-  {
-    caption: "Docs",
-    route: "",
-  },
-];
+// data
+import { info as menu } from "../static/Navigation.info";
 
 // main
 function Navbar() {
