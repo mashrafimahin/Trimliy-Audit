@@ -70,10 +70,10 @@ function Navbar() {
         {/* actions */}
         <div className="flex items-center gap-4">
           <Button variant={"regular"}>
-            <Link to={"/"}>Log In</Link>
+            <Link to={"/login"}>Log In</Link>
           </Button>
           <Button>
-            <Link to={"/"}>Sign Up</Link>
+            <Link to={"/signup"}>Sign Up</Link>
           </Button>
         </div>
       </div>
