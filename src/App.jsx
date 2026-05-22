@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router";
 
 // pages
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 // main
 function App() {
@@ -13,6 +14,7 @@ function App() {
         {/* routes */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Suspense>
     </>
