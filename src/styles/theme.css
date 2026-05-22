@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy-950: #050810;
+  --color-navy-900: #0b0f19;
+  --color-navy-800: #121a2f;
+  --color-navy-700: #1c2744;
+  --color-navy-600: #2a3b66;
+
+  --color-electric-blue: #0070f3;
+  --color-electric-cyan: #00f0ff;
+  --color-electric-purple: #8a2be2;
+  --color-electric-indigo: #4b0082;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --background: var(--color-navy-900);
+    --foreground: #f8fafc;
+
+    --card: rgba(18, 26, 47, 0.6);
+    --card-foreground: #f8fafc;
+    --card-border: rgba(255, 255, 255, 0.05);
+
+    --primary: var(--color-electric-blue);
+    --primary-foreground: #ffffff;
+
+    --muted: var(--color-navy-800);
+    --muted-foreground: #94a3b8;
+
+    --border: rgba(255, 255, 255, 0.1);
+    --ring: var(--color-electric-blue);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-[rgba(18,26,47,0.6)] backdrop-blur-xl border border-[rgba(255,255,255,0.05)];
+  }
+  .glass-card {
+    @apply bg-[rgba(18,26,47,0.4)] backdrop-blur-md border border-[rgba(255,255,255,0.08)] rounded-2xl;
+  }
+  .glow-text {
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.5);
+  }
+  .glow-box {
+    box-shadow: 0 0 40px -10px rgba(0, 112, 243, 0.3);
+  }
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
+  }
+}
