@@ -1,11 +1,11 @@
 // dependencies
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router";
-
 // pages
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Login"));
+const SignUp = lazy(() => import("./pages/SignUp"));
+const About = lazy(() => import("./pages/About"));
 
 // main
 function App() {
@@ -17,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </Suspense>
     </>
