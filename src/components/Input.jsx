@@ -1,8 +1,27 @@
-function Input({ placeholder, ...rest }) {
+// utility
+import { cn } from "../utils/ClassMerger";
+
+// main
+function Input({
+  type,
+  name,
+  value,
+  setValue,
+  placeholder,
+  className,
+  ...rest
+}) {
   return (
     <input
+      type={type}
+      name={name}
+      value={value}
+      onChange={(e) => setValue(e)}
       placeholder={placeholder}
-      className="w-full pl-12 h-14 bg-navy-900/50 text-lg border-transparent focus:bg-navy-900 rounded-md"
+      className={cn(
+        "w-full pl-12 h-14 bg-navy-900/50 text-lg border-transparent focus:bg-navy-900 rounded-md",
+        className,
+      )}
       {...rest}
     />
   );
