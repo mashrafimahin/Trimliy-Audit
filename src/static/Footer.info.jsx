@@ -10,15 +10,11 @@ export const info = {
       caption: "Product",
       links: [
         {
-          itemName: "Link Management",
+          itemName: "Manage Links",
           route: "",
         },
         {
           itemName: "QR Codes",
-          route: "",
-        },
-        {
-          itemName: "Link-in-bio",
           route: "",
         },
       ],
@@ -28,10 +24,6 @@ export const info = {
       links: [
         {
           itemName: "Docs",
-          route: "",
-        },
-        {
-          itemName: "API",
           route: "",
         },
         {
@@ -50,10 +42,6 @@ export const info = {
         {
           itemName: "Privacy",
           route: "privacy",
-        },
-        {
-          itemName: "Terms",
-          route: "terms",
         },
       ],
     },
