@@ -1,5 +1,5 @@
 // dependencies
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 // icon
 import { Target } from "lucide-react";
 // typography
@@ -15,6 +15,14 @@ import { info as data } from "../static/About.info";
 
 // main
 function AboutLayout() {
+  // navigation
+  const navigate = useNavigate();
+
+  // handle navigation
+  const handleClick = (route) => {
+    navigate(`/${route}`);
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -190,8 +198,11 @@ function AboutLayout() {
                 optimize their digital presence.
               </Paragraph>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button className="w-full sm:w-auto px-10 text-lg shadow-[0_0_30px_rgba(37,99,235,0.3)]">
-                  <Link to="/signup">Get Started Free</Link>
+                <Button
+                  className="w-full sm:w-auto px-10 text-lg shadow-[0_0_30px_rgba(37,99,235,0.3)]"
+                  onClick={() => handleClick("signup")}
+                >
+                  Get Started Free
                 </Button>
               </div>
             </div>
