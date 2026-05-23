@@ -18,15 +18,12 @@ function AboutLayout() {
       {/* Hero Section */}
       <CommonHero
         sectionTag={data.hero.tag}
-        sectionTagTitle={data.hero.tagTitle}
         headerTitle={data.hero.title}
         headerDescription={data.hero.description}
         buttonOne={data.hero.buttonOne}
         buttonOneLink={data.hero.buttonOneLink}
-        buttonOneTitle={data.hero.buttonOneTag}
         buttonTwo={data.hero.buttonTwo}
         buttonTwoLink={data.hero.buttonTwoLink}
-        buttonTwoTitle={data.hero.buttonTwoTag}
         extendedImage={data.hero.extendedImage}
         extendedImageSource={data.hero.extendedImageSource}
       />
