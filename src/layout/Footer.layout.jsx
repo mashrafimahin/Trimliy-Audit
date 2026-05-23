@@ -36,6 +36,10 @@ function Footer() {
           </div>
         ))}
       </div>
+      {/* copyrights */}
+      <p className="mt-20 text-center text-sm text-slate-500 w-full">
+        &copy; {new Date().getFullYear()} - Trimly. All Rights Reserved.
+      </p>
     </footer>
   );
 }
