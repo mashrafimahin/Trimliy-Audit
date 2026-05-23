@@ -3,6 +3,8 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router";
 // route handler
 import RouteHandler from "./utils/RouteHandler";
+// loader
+import Loader from "./components/Loader";
 // pages
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -15,7 +17,7 @@ const Privacy = lazy(() => import("./pages/Privacy"));
 function App() {
   return (
     <>
-      <Suspense fallback={<h1>loading</h1>}>
+      <Suspense fallback={<Loader />}>
         {/* routes */}
         <Routes>
           <Route path="/" element={<Home />} />
