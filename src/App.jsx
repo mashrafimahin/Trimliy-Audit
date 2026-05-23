@@ -1,6 +1,8 @@
 // dependencies
 import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router";
+// route handler
+import RouteHandler from "./utils/RouteHandler";
 // pages
 const Home = lazy(() => import("./pages/Home"));
 const Login = lazy(() => import("./pages/Login"));
@@ -22,6 +24,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route element={<RouteHandler />}></Route>
         </Routes>
       </Suspense>
     </>
