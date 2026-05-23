@@ -3,13 +3,14 @@ import { Target } from "lucide-react";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
+// layouts
+import CTA from "./CTA.layout";
 // components
 import ProfileCard from "../components/ProfileCard";
 import CommonHero from "../layout/CommonHero.layout";
 import FeaturesCard from "../components/FeaturesCard";
 // data
 import { info as data } from "../static/About.info";
-import CTA from "./CTA.layout";
 
 // main
 function AboutLayout() {
