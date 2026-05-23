@@ -1,5 +1,5 @@
 // dependencies
-import { Link } from "react-router";
+import { useNavigate } from "react-router";
 // icons
 import { Sparkles } from "lucide-react";
 // components
@@ -12,6 +12,8 @@ import Paragraph from "../typography/Paragraph";
 function CommonHero({
   sectionTag,
   sectionTagTitle,
+  headerTitle,
+  headerDescription,
   buttonOne,
   buttonOneTitle,
   buttonOneLink,
@@ -21,6 +23,14 @@ function CommonHero({
   extendedImage,
   extendedImageSource,
 }) {
+  // navigate config
+  const navigate = useNavigate();
+
+  // handle navigate
+  const handleClick = (route) => {
+    navigate(`/${route}`);
+  };
+
   return (
     <section className="pt-20 pb-20 px-6 relative overflow-hidden">
       {/* gradient decoration */}
@@ -37,24 +47,23 @@ function CommonHero({
             </div>
           )}
           <Header>
-            Building Smarter Links for <br className="hidden md:block" />
-            <span className="gradient-text">the Modern Web</span>
+            {headerTitle[0]} <br className="hidden md:block" />
+            <span className="gradient-text">{headerTitle[1]}</span>
           </Header>
-          <Paragraph>
-            Trimly is a modern URL shortening and analytics platform designed to
-            help creators, developers, businesses, and teams create smart links,
-            track engagement, and manage digital sharing more efficiently.
-          </Paragraph>
+          <Paragraph>{headerDescription}</Paragraph>
           {/* actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             {buttonOne && (
-              <Button>
-                <Link to={`/${buttonOneLink}`}>{buttonOneTitle}</Link>
+              <Button onClick={() => handleClick(buttonOneLink)}>
+                {buttonOneTitle}
               </Button>
             )}
             {buttonTwo && (
-              <Button variant={"regular"}>
-                <Link to={`/${buttonTwoLink}`}>{buttonTwoTitle}</Link>
+              <Button
+                variant={"regular"}
+                onClick={() => handleClick(buttonTwoLink)}
+              >
+                {buttonTwoTitle}
               </Button>
             )}
           </div>
