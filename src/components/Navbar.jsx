@@ -1,6 +1,7 @@
 // dependencies
 import { Link } from "react-router-dom";
 import { Link as InPageScroll } from "react-scroll";
+import { useNavigate } from "react-router-dom";
 // icons
 import { Link2 } from "lucide-react";
 // components
@@ -10,6 +11,14 @@ import { info as menu } from "../static/Navigation.info";
 
 // main
 function Navbar() {
+  // navigation
+  const navigate = useNavigate();
+
+  // handle navigation
+  const handleClick = (route) => {
+    navigate(`/${route}`);
+  };
+
   return (
     <header className="sticky top-0 z-50 glass border-b border-white/5">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
@@ -52,12 +61,10 @@ function Navbar() {
 
         {/* actions */}
         <div className="flex items-center gap-4">
-          <Button variant={"regular"}>
-            <Link to={"/login"}>Log In</Link>
+          <Button variant={"regular"} onClick={() => handleClick("login")}>
+            Log In
           </Button>
-          <Button>
-            <Link to={"/signup"}>Sign Up</Link>
-          </Button>
+          <Button onClick={() => handleClick("signup")}>Sign Up</Button>
         </div>
       </div>
     </header>
