@@ -12,12 +12,12 @@ export default function ScrollManager() {
 
     if (targetId) {
       // Wait a tiny moment for the new page layout to load
-      setTimeout(() => {
+      requestAnimationFrame(() => {
         const element = document.getElementById(targetId);
         if (element) {
           element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-      }, 100);
+      });
     } else {
       // If no section is targeted, go to the top of the new page
       window.scrollTo(0, 0);
