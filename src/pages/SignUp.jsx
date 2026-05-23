@@ -80,9 +80,7 @@ function SignUp() {
         {/* cards */}
         <div className="relative z-10 max-w-lg text-center px-12">
           <div>
-            <Header variant={"h2"} className={"text-5xl"}>
-              Start building smarter links today.
-            </Header>
+            <Header variant={"h2"}>Start building smarter links today.</Header>
             <div className="grid grid-cols-2 gap-4 text-left mt-10">
               {cards.map((item, i) => (
                 <div

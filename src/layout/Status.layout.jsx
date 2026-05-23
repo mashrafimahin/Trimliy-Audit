@@ -5,10 +5,10 @@ function Status() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { label: "Links Created", value: "80k+" },
-            { label: "Total Clicks", value: "650k" },
-            { label: "Active Users", value: "5K+" },
-            { label: "Uptime", value: "99.99%" },
+            { label: "Links Created", value: "100k+" },
+            { label: "Total Clicks", value: "750k+" },
+            { label: "Active Users", value: "10K+" },
+            { label: "Uptime", value: "99.9%" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
               <h3 className="text-4xl md:text-5xl font-bold text-white mb-2 tracking-tight">
