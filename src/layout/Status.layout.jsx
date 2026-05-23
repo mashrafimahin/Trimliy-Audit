@@ -1,5 +1,3 @@
-// dependencies
-
 // main
 function Status() {
   return (
@@ -7,9 +5,9 @@ function Status() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { label: "Links Created", value: "10M+" },
-            { label: "Total Clicks", value: "2.5B" },
-            { label: "Active Users", value: "50K+" },
+            { label: "Links Created", value: "80k+" },
+            { label: "Total Clicks", value: "650k" },
+            { label: "Active Users", value: "5K+" },
             { label: "Uptime", value: "99.99%" },
           ].map((stat, i) => (
             <div key={i} className="text-center">

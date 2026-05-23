@@ -1,4 +1,3 @@
-// dependencies
 // components
 import PricingCard from "../components/PricingCard";
 // typography
@@ -14,8 +13,8 @@ function Pricing() {
       <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-purple-600/10 blur-[150px] rounded-full pointer-events-none" />
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <Header variant={"regular"}>{data.title}</Header>
-          <Paragraph>{data.description}</Paragraph>
+          <Header variant={"h2"}>{data.title}</Header>
+          <Paragraph variant={"large"}>{data.description}</Paragraph>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">

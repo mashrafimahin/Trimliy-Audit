@@ -1,4 +1,3 @@
-// dependencies
 // icons
 import { Link2, ArrowRight } from "lucide-react";
 // components
@@ -11,15 +10,15 @@ import Paragraph from "../typography/Paragraph";
 // main
 function Hero() {
   return (
-    <section className="pt-32 pb-20 px-6 relative">
+    <section className="pt-20 pb-20 px-6 relative">
       <div className="container mx-auto max-w-6xl text-center z-10 relative">
         {/* heading */}
         <div>
-          <Header>
+          <Header variant={"h1"}>
             Shorten, Track & <br className="hidden md:block" />
             <span className="gradient-text">Manage Links Smarter</span>
           </Header>
-          <Paragraph>
+          <Paragraph variant={"large"}>
             The premium URL shortener for modern teams. Build branded links,
             track real-time analytics, and optimize your conversion rates all in
             one powerful platform.
