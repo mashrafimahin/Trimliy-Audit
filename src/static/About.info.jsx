@@ -16,17 +16,14 @@ import {
 // data
 export const info = {
   hero: {
-    tag: true,
-    tagTitle: "our Story",
+    tag: "our Story",
     title: ["Building Smarter Links for", "the Modern Web"],
     description:
       "Trimly is a modern URL shortening and analytics platform designed to help creators, developers, businesses, and teams create smart links, track engagement, and manage digital sharing more efficiently.",
-    buttonOne: true,
+    buttonOne: "Get Started",
     buttonOneLink: "signup",
-    buttonOneTag: "Get Started",
-    buttonTwo: true,
+    buttonTwo: "Explore Now",
     buttonTwoLink: "about",
-    buttonTwoTag: "Explore Now",
     extendedImage: true,
     extendedImageSource:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2070",
