@@ -3,7 +3,7 @@ import { Link } from "react-router";
 // icons
 import { Link2 } from "lucide-react";
 // data
-import { info as data } from "../static/Features.info";
+import { info as data } from "../static/Footer.info";
 
 function Footer() {
   return (
