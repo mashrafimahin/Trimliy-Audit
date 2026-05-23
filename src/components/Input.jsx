@@ -19,7 +19,7 @@ function Input({
       onChange={(e) => setValue(e)}
       placeholder={placeholder}
       className={cn(
-        "w-full pl-12 h-14 bg-navy-900/50 text-lg border-transparent focus:bg-navy-900 rounded-md",
+        "w-full pl-4 h-14 bg-navy-900/50 text-md border border-gray-100/16 focus:bg-navy-900 rounded-md",
         className,
       )}
       {...rest}

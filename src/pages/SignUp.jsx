@@ -172,7 +172,7 @@ function SignUp() {
                     value={formInfo.password}
                     setValue={changeFormData}
                     placeholder={"••••••••"}
-                    className={"px-1 outline-none"}
+                    className={"px-1 outline-none  border-transparent"}
                   />
                   <span className="cursor-pointer" onClick={handleVisible}>
                     {!visible ? <Eye size={20} /> : <EyeOff size={20} />}
