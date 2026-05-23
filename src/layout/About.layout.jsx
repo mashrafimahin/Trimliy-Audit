@@ -21,6 +21,8 @@ function AboutLayout() {
       <CommonHero
         sectionTag={data.hero.tag}
         sectionTagTitle={data.hero.tagTitle}
+        headerTitle={data.hero.title}
+        headerDescription={data.hero.description}
         buttonOne={data.hero.buttonOne}
         buttonOneLink={data.hero.buttonOneLink}
         buttonOneTitle={data.hero.buttonOneTag}
