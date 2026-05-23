@@ -1,6 +1,5 @@
 // dependencies
 import { Link } from "react-router-dom";
-import { Link as InPageScroll } from "react-scroll";
 import { useNavigate } from "react-router-dom";
 // icons
 import { Link2 } from "lucide-react";
@@ -42,17 +41,12 @@ function Navbar() {
                 key={i}
                 className="text-sm font-medium text-slate-300 hover:text-white transition-colors cursor-pointer"
               >
-                {item.caption === "Docs" ? (
+                {item.isExternal ? (
                   <Link to={`/${item.route}`}>{item.caption}</Link>
                 ) : (
-                  <InPageScroll
-                    to={`${item.route}`}
-                    smooth={true}
-                    offset={-20}
-                    duration={500}
-                  >
+                  <Link to={`/`} state={{ scrollToSection: item.route }}>
                     {item.caption}
-                  </InPageScroll>
+                  </Link>
                 )}
               </li>
             ))}
