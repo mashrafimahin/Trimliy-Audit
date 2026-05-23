@@ -11,14 +11,11 @@ import Paragraph from "../typography/Paragraph";
 // main
 function CommonHero({
   sectionTag,
-  sectionTagTitle,
   headerTitle,
   headerDescription,
   buttonOne,
-  buttonOneTitle,
   buttonOneLink,
   buttonTwo,
-  buttonTwoTitle,
   buttonTwoLink,
   extendedImage,
   extendedImageSource,
@@ -43,19 +40,19 @@ function CommonHero({
           {sectionTag && (
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-8">
               <Sparkles className="w-4 h-4" />
-              {sectionTagTitle}
+              {sectionTag}
             </div>
           )}
-          <Header>
+          <Header variant={"h2"}>
             {headerTitle[0]} <br className="hidden md:block" />
             <span className="gradient-text">{headerTitle[1]}</span>
           </Header>
-          <Paragraph>{headerDescription}</Paragraph>
+          <Paragraph variant={"large"}>{headerDescription}</Paragraph>
           {/* actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             {buttonOne && (
               <Button onClick={() => handleClick(buttonOneLink)}>
-                {buttonOneTitle}
+                {buttonOne}
               </Button>
             )}
             {buttonTwo && (
@@ -63,7 +60,7 @@ function CommonHero({
                 variant={"regular"}
                 onClick={() => handleClick(buttonTwoLink)}
               >
-                {buttonTwoTitle}
+                {buttonTwo}
               </Button>
             )}
           </div>
