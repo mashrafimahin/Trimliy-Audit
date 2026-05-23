@@ -96,8 +96,8 @@ export const info = {
     ],
   },
   stats: [
-    { label: "Links Generated", value: "1M+" },
-    { label: "Clicks Tracked", value: "50M+" },
+    { label: "Links Generated", value: "100k+" },
+    { label: "Clicks Tracked", value: "750k+" },
     { label: "Active Users", value: "10K+" },
     { label: "Uptime", value: "99.9%" },
   ],
