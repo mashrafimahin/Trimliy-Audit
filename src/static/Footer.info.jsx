@@ -49,11 +49,11 @@ export const info = {
         },
         {
           itemName: "Privacy",
-          route: "",
+          route: "privacy",
         },
         {
           itemName: "Terms",
-          route: "",
+          route: "terms",
         },
       ],
     },
