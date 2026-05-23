@@ -117,5 +117,5 @@ export const info = {
     "Manage cookie preferences",
     "Control communication settings",
   ],
-  mail: "mail@example.com",
+  mail: "mailto:mail@example.com",
 };
