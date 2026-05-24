@@ -46,5 +46,5 @@ export const sideNavInfo = [
   { name: "QR Codes", path: "/dashboard/qr", icon: QrCode },
   { name: "Teams", path: "/dashboard/teams", icon: Users },
   { name: "Billing", path: "/dashboard/billing", icon: CreditCard },
-  { name: "Profile", path: "/dashboard/settings", icon: User },
+  { name: "Profile", path: "/dashboard/profile", icon: User },
 ];
