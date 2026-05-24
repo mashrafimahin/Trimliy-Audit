@@ -121,4 +121,25 @@ export const overview = {
       status: "Inactive",
     },
   ],
+  billing: {
+    cardInfo: {
+      type: "Pro Plan",
+      cost: 29,
+      nextBillingDate: "26-10-2026",
+      features: [
+        "100,000 tracked clicks/mo",
+        "Custom domains (up to 5)",
+        "Advanced analytics",
+        "Team members (up to 3)",
+      ],
+      card: "VISA",
+      cardLastDigit: 4242,
+      expiryDate: "12/28",
+      paymentHistory: [
+        { date: "Sep 1, 2026", amount: "$29.00", status: "Paid" },
+        { date: "Aug 1, 2026", amount: "$29.00", status: "Paid" },
+        { date: "Jul 1, 2026", amount: "$29.00", status: "Paid" },
+      ],
+    },
+  },
 };
