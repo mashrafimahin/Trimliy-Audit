@@ -142,4 +142,14 @@ export const overview = {
       ],
     },
   },
+  profile: {
+    profileSetting: {
+      img: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+      firstName: "Mashrafi",
+      lastName: "Mahin",
+      userName: "@mashrafi120",
+      email: "mahin123@gmail.com",
+      company: "",
+    },
+  },
 };
