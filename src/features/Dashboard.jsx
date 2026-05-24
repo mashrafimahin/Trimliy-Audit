@@ -6,6 +6,7 @@ import { Search, Bell, Menu } from "lucide-react";
 import Overview from "../layout/Overview.layout";
 import Links from "../layout/Links.layout";
 import Payment from "../layout/Payment.layout";
+import Profile from "../layout/Profile.layout";
 // components
 import Loader from "../components/Loader";
 import Input from "../components/Input";
@@ -21,7 +22,7 @@ const VIEW_COMPONENTS = {
   qr: null,
   teams: null,
   billing: Payment,
-  settings: null,
+  profile: Profile,
 };
 
 // main
