@@ -1,22 +1,52 @@
 // dependencies
-import { useState } from "react";
+import { Suspense, useState } from "react";
 // icons
 import { Search, Bell, Menu } from "lucide-react";
 // layouts
 import Overview from "../layout/Overview.layout";
+import Links from "../layout/Links.layout";
 // components
-import Sidebar from "../components/Sidebar";
+import Loader from "../components/Loader";
 import Input from "../components/Input";
+import Sidebar from "../components/Sidebar";
+// data
+import { overview as data } from "../static/Dashboard.info";
+
+// View mapping
+const VIEW_COMPONENTS = {
+  overview: Overview,
+  links: Links,
+  analytics: null,
+  qr: null,
+  teams: null,
+  billing: null,
+  settings: null,
+};
 
 // main
 const Dashboard = () => {
   // state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeView, setActiveView] = useState("overview");
+
+  // Get current view component
+  const CurrentViewComponent = VIEW_COMPONENTS[activeView];
+  const viewData = data[activeView];
+
+  // Handle view change from sidebar
+  const handleViewChange = (viewKey) => {
+    setActiveView(viewKey);
+    setIsMobileMenuOpen(false);
+  };
 
   return (
     <div className="flex h-screen bg-navy-900 overflow-hidden">
       {/* sidebar */}
-      <Sidebar isMobileMenuOpen={isMobileMenuOpen} />
+      <Sidebar
+        isMobileMenuOpen={isMobileMenuOpen}
+        activeView={activeView}
+        onViewChange={handleViewChange}
+      />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 overflow-y-auto relative">
@@ -72,7 +102,15 @@ const Dashboard = () => {
 
         {/* Page Content */}
         <div className="mx-8 my-4">
-          <Overview />
+          <Suspense fallback={<Loader />}>
+            {CurrentViewComponent ? (
+              <CurrentViewComponent info={viewData} />
+            ) : (
+              <div className="flex items-center justify-center h-full text-slate-400">
+                <p>View not available yet</p>
+              </div>
+            )}
+          </Suspense>
         </div>
       </main>
     </div>
