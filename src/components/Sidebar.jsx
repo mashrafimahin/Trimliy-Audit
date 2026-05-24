@@ -1,5 +1,5 @@
 // dependencies
-import { Link, useLocation } from "react-router";
+import { Link } from "react-router";
 // icons
 import { Link as LinkIcon } from "lucide-react";
 //  utility tools
@@ -7,10 +7,26 @@ import { cn } from "../utils/ClassMerger";
 // data
 import { sideNavInfo as data } from "../static/Navigation.info";
 
+// View key mapping
+const PATH_TO_VIEW_KEY = {
+  "/dashboard": "overview",
+  "/dashboard/links": "links",
+  "/dashboard/analytics": "analytics",
+  "/dashboard/qr": "qr",
+  "/dashboard/teams": "teams",
+  "/dashboard/billing": "billing",
+  "/dashboard/settings": "settings",
+};
+
 // main
-const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
-  // location
-  const location = useLocation();
+const Sidebar = ({ isMobileMenuOpen, activeView, onViewChange }) => {
+  // Handle navigation item click
+  const handleNavClick = (path) => {
+    const viewKey = PATH_TO_VIEW_KEY[path];
+    if (viewKey) {
+      onViewChange(viewKey);
+    }
+  };
 
   return (
     <div className="flex h-screen bg-navy-900 overflow-hidden">
@@ -36,14 +52,14 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
         {/* navigation items */}
         <nav className="flex-1 overflow-y-auto py-6 px-3 space-y-1">
           {data.map((item) => {
-            const isActive = location.pathname === item.path;
+            const viewKey = PATH_TO_VIEW_KEY[item.path];
+            const isActive = activeView === viewKey;
             return (
-              <Link
+              <button
                 key={item.path}
-                to={item.path}
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={() => handleNavClick(item.path)}
                 className={cn(
-                  "flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group",
+                  "w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group cursor-pointer",
                   isActive
                     ? "bg-blue-600/10 text-blue-400"
                     : "text-slate-400 hover:text-white hover:bg-white/5",
@@ -58,7 +74,7 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }) => {
                   )}
                 />
                 <span>{item.name}</span>
-              </Link>
+              </button>
             );
           })}
         </nav>
