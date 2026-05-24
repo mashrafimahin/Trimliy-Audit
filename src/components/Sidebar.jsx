@@ -15,7 +15,7 @@ const PATH_TO_VIEW_KEY = {
   "/dashboard/qr": "qr",
   "/dashboard/teams": "teams",
   "/dashboard/billing": "billing",
-  "/dashboard/settings": "settings",
+  "/dashboard/profile": "profile",
 };
 
 // main
