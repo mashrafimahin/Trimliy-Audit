@@ -19,7 +19,7 @@ const Dashboard = () => {
       <Sidebar isMobileMenuOpen={isMobileMenuOpen} />
 
       {/* Main Content */}
-      <main className="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+      <main className="flex-1 flex flex-col min-w-0 overflow-y-auto relative">
         {/* light effect */}
         <div className="absolute top-0 right-0 w-[40%] h-[30%] bg-blue-600/10 blur-[100px] rounded-full pointer-events-none" />
 
@@ -71,7 +71,7 @@ const Dashboard = () => {
         </header>
 
         {/* Page Content */}
-        <div className="mx-8 my-4 overflow-scroll">
+        <div className="mx-8 my-4">
           <Overview />
         </div>
       </main>
