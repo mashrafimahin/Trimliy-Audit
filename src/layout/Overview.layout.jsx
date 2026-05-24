@@ -7,11 +7,9 @@ import { Link2 } from "lucide-react";
 // components
 import Chart from "../components/Chart";
 import Button from "../components/Button";
-// data
-import { overview as info } from "../static/Dashboard.info";
 import Table from "../components/Table";
 
-const Overview = () => {
+const Overview = ({ info }) => {
   return (
     <div className="space-y-8">
       {/* top instructions */}
