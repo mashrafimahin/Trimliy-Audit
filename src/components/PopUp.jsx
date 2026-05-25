@@ -13,7 +13,7 @@ const PopUp = ({ linkCreation }) => {
       <div className="fixed inset-0 z-101 flex items-center justify-center p-4 pointer-events-none">
         <div className="w-full max-w-lg pointer-events-auto">
           {/* content */}
-          <div className="p-0 overflow-hidden border border-white/10 shadow-2xl relative">
+          <div className="p-0 overflow-hidden border border-white/10 shadow-2xl relative rounded-xl">
             {linkCreation && <CreateLinkLayout />}
           </div>
         </div>
