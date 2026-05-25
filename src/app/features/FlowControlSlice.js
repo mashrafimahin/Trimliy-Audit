@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const status = {
   activeView: "dashboard",
   mobileToggle: false,
+  viewPopup: false,
 };
 
 // slice
@@ -18,9 +19,13 @@ const FlowControlSlice = createSlice({
     handleMobileToggle: (state) => {
       state.mobileToggle = !state.mobileToggle;
     },
+    handlePopupView: (state) => {
+      state.viewPopup = !state.viewPopup;
+    },
   },
 });
 
 // exports
 export default FlowControlSlice.reducer;
-export const { handleView, handleMobileToggle } = FlowControlSlice.actions;
+export const { handleView, handleMobileToggle, handlePopupView } =
+  FlowControlSlice.actions;
