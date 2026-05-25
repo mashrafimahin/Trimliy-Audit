@@ -4,13 +4,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import ProfileSettingData from "../features/ProfileSettingSlice";
 import BillingSettingData from "../features/BillingSettingSlice";
 import LinksSettingSlice from "../features/LinksSettingSlice";
+import FlowControlSlice from "../features/FlowControlSlice";
 
 const Store = configureStore({
   reducer: {
     profileData: ProfileSettingData,
     billingData: BillingSettingData,
     linksData: LinksSettingSlice,
-    dashboardPopup: null,
+    flowControl: FlowControlSlice,
   },
 });
 
