@@ -1,7 +1,7 @@
 // dependencies
 import { useValidation } from "../hooks/useValidation";
 // states
-import { useProfileData } from "../hooks/useSlices";
+import { useSlices } from "../hooks/useSlices";
 import {
   handleEditButton,
   updateInfo,
@@ -20,7 +20,7 @@ const commonStyle = "mb-0 mt-2 border border-slate-800 p-2 pl-4 rounded-md";
 
 // main
 const ProfileActionCard = () => {
-  const { data, dispatch } = useProfileData("profileData");
+  const { data, dispatch } = useSlices("profileData");
   const [profileInfo, setProfileInfo] = useState(data.info);
   const [errors, setErrors] = useState({});
 
