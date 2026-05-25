@@ -9,7 +9,7 @@ import Chart from "../components/Chart";
 import Button from "../components/Button";
 import Table from "../components/Table";
 
-const Overview = ({ info }) => {
+const Overview = ({ info, handleViewChange }) => {
   return (
     <div className="space-y-8">
       {/* top instructions */}
@@ -20,7 +20,7 @@ const Overview = ({ info }) => {
             Welcome back, here's what's happening with your links today.
           </Paragraph>
         </div>
-        <Button>
+        <Button onClick={() => handleViewChange("links")}>
           <Link2 className="w-4 h-4 mr-2" /> Create Link
         </Button>
       </div>
