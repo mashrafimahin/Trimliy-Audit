@@ -40,11 +40,11 @@ export const info = [
 
 // data - dashboard
 export const sideNavInfo = [
-  { name: "Dashboard", path: "/dashboard", icon: LayoutDashboard },
-  { name: "My Links", path: "/dashboard/links", icon: LinkIcon },
-  { name: "Analytics", path: "/dashboard/analytics", icon: BarChart2 },
-  { name: "QR Codes", path: "/dashboard/qr", icon: QrCode },
-  { name: "Teams", path: "/dashboard/teams", icon: Users },
-  { name: "Billing", path: "/dashboard/billing", icon: CreditCard },
-  { name: "Profile", path: "/dashboard/profile", icon: User },
+  { name: "Dashboard", path: "dashboard", icon: LayoutDashboard },
+  { name: "My Links", path: "links", icon: LinkIcon },
+  { name: "Analytics", path: "analytics", icon: BarChart2 },
+  { name: "QR Codes", path: "qr", icon: QrCode },
+  { name: "Teams", path: "teams", icon: Users },
+  { name: "Billing", path: "billing", icon: CreditCard },
+  { name: "Profile", path: "profile", icon: User },
 ];
