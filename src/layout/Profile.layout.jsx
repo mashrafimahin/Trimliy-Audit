@@ -25,7 +25,7 @@ const COMPONENT_PATH = {
   notifications: null,
 };
 
-const Profile = ({ info }) => {
+const Profile = () => {
   const [activeTab, setActiveTab] = useState("profile");
   const SelectedComponent = COMPONENT_PATH[activeTab];
 
@@ -64,7 +64,7 @@ const Profile = ({ info }) => {
         <div className="flex-1 w-full">
           <Suspense fallback={<div className="text-slate-400">Loading...</div>}>
             {SelectedComponent ? (
-              <SelectedComponent data={info} />
+              <SelectedComponent />
             ) : (
               <NotFoundPlaceholder />
             )}
