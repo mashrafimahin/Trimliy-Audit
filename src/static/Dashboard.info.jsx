@@ -1,7 +1,6 @@
 // icons
 import { Globe2, Activity, Link2, MousePointerClick } from "lucide-react";
 
-// data
 export const overview = {
   overview: {
     chartData: [
@@ -140,16 +139,6 @@ export const overview = {
         { date: "Aug 1, 2026", amount: "$29.00", status: "Paid" },
         { date: "Jul 1, 2026", amount: "$29.00", status: "Paid" },
       ],
-    },
-  },
-  profile: {
-    profileSetting: {
-      img: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-      firstName: "Mashrafi",
-      lastName: "Mahin",
-      userName: "@mashrafi120",
-      email: "mahin123@gmail.com",
-      company: "",
     },
   },
 };
