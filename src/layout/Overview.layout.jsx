@@ -1,5 +1,6 @@
 // dependencies
 import { useSlices } from "../hooks/useSlices";
+import { handlePopupView } from "../app/features/FlowControlSlice";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
@@ -13,6 +14,7 @@ import Table from "../components/Table";
 const Overview = () => {
   // state
   const { data } = useSlices("overviewData");
+  const { dispatch } = useSlices("flowControl");
   // expected icons
   const expectedIcons = [Link2, MousePointerClick, Activity, Globe2];
   // filter data
@@ -26,6 +28,11 @@ const Overview = () => {
     stats: filteredData,
   };
 
+  // handle popup control
+  const handlePopup = () => {
+    dispatch(handlePopupView());
+  };
+
   return (
     <div className="space-y-8">
       {/* top instructions */}
@@ -36,7 +43,7 @@ const Overview = () => {
             Welcome back, here's what's happening with your links today.
           </Paragraph>
         </div>
-        <Button>
+        <Button onClick={handlePopup}>
           <Link2 className="w-4 h-4 mr-2" /> Create Link
         </Button>
       </div>
