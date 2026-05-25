@@ -2,15 +2,15 @@
 import { Suspense, useState } from "react";
 // icons
 import { Search, Bell, Menu } from "lucide-react";
+// components
+import Loader from "../components/Loader";
+import Input from "../components/Input";
+import Sidebar from "../components/Sidebar";
 // layouts
 import Overview from "../layout/Overview.layout";
 import Links from "../layout/Links.layout";
 import Payment from "../layout/Payment.layout";
 import Profile from "../layout/Profile.layout";
-// components
-import Loader from "../components/Loader";
-import Input from "../components/Input";
-import Sidebar from "../components/Sidebar";
 // data
 import { overview as data } from "../static/Dashboard.info";
 
@@ -106,7 +106,10 @@ const Dashboard = () => {
         <div className="mx-8 my-4">
           <Suspense fallback={<Loader />}>
             {CurrentViewComponent ? (
-              <CurrentViewComponent info={viewData} />
+              <CurrentViewComponent
+                info={viewData}
+                handleViewChange={handleViewChange}
+              />
             ) : (
               <div className="flex items-center justify-center h-full text-slate-400">
                 <p>View not available yet</p>
