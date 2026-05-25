@@ -1,4 +1,5 @@
 // dependencies
+import { useSlices } from "../hooks/useSlices";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
@@ -8,7 +9,10 @@ import LinkBox from "../components/LinkBox";
 // icons
 import { Plus } from "lucide-react";
 
-const Links = ({ info }) => {
+const Links = () => {
+  // state
+  const { data } = useSlices("linksData");
+
   return (
     <div className="space-y-6">
       {/* header */}
@@ -26,7 +30,7 @@ const Links = ({ info }) => {
 
       {/* link lists */}
       <div className="space-y-4">
-        {info.map((item, i) => (
+        {data.links.map((item, i) => (
           <LinkBox key={i} item={item} />
         ))}
       </div>
