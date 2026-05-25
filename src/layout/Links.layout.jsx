@@ -1,5 +1,6 @@
 // dependencies
 import { useSlices } from "../hooks/useSlices";
+import { handlePopupView } from "../app/features/FlowControlSlice";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
@@ -12,6 +13,12 @@ import { Plus } from "lucide-react";
 const Links = () => {
   // state
   const { data } = useSlices("linksData");
+  const { dispatch } = useSlices("flowControl");
+
+  // handle popup control
+  const handlePopup = () => {
+    dispatch(handlePopupView());
+  };
 
   return (
     <div className="space-y-6">
@@ -23,7 +30,7 @@ const Links = () => {
             Manage, edit, and track your shortened URLs.
           </Paragraph>
         </div>
-        <Button>
+        <Button onClick={handlePopup}>
           <Plus className="w-5 h-5 mr-2" /> Create New
         </Button>
       </div>
