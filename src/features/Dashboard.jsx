@@ -1,22 +1,22 @@
 // dependencies
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
+import { useSlices } from "../hooks/useSlices";
+import { handleMobileToggle } from "../app/features/FlowControlSlice";
 // icons
 import { Search, Bell, Menu } from "lucide-react";
 // components
 import Loader from "../components/Loader";
 import Input from "../components/Input";
 import Sidebar from "../components/Sidebar";
+import NotFoundPlaceholder from "../components/NotFoundPlaceholder";
 // layouts
 import Overview from "../layout/Overview.layout";
 import Links from "../layout/Links.layout";
 import Payment from "../layout/Payment.layout";
 import Profile from "../layout/Profile.layout";
-// data
-import { overview as data } from "../static/Dashboard.info";
-
 // View mapping
 const VIEW_COMPONENTS = {
-  overview: Overview,
+  dashboard: Overview,
   links: Links,
   analytics: null,
   qr: null,
@@ -28,27 +28,20 @@ const VIEW_COMPONENTS = {
 // main
 const Dashboard = () => {
   // state
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeView, setActiveView] = useState("overview");
+  const { data, dispatch } = useSlices("flowControl");
 
   // Get current view component
-  const CurrentViewComponent = VIEW_COMPONENTS[activeView];
-  const viewData = data[activeView];
+  const CurrentViewComponent = VIEW_COMPONENTS[data.activeView];
 
-  // Handle view change from sidebar
-  const handleViewChange = (viewKey) => {
-    setActiveView(viewKey);
-    setIsMobileMenuOpen(false);
+  // handle toggle
+  const handleToggle = () => {
+    dispatch(handleMobileToggle());
   };
 
   return (
     <div className="flex h-screen bg-navy-900 overflow-hidden">
       {/* sidebar */}
-      <Sidebar
-        isMobileMenuOpen={isMobileMenuOpen}
-        activeView={activeView}
-        onViewChange={handleViewChange}
-      />
+      <Sidebar />
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 overflow-y-auto relative">
@@ -62,7 +55,7 @@ const Dashboard = () => {
             {/* humberger */}
             <button
               className="lg:hidden text-slate-400 hover:text-white"
-              onClick={() => setIsMobileMenuOpen(true)}
+              onClick={handleToggle}
             >
               <Menu className="w-6 h-6" />
             </button>
@@ -106,13 +99,10 @@ const Dashboard = () => {
         <div className="mx-8 my-4">
           <Suspense fallback={<Loader />}>
             {CurrentViewComponent ? (
-              <CurrentViewComponent
-                info={viewData}
-                handleViewChange={handleViewChange}
-              />
+              <CurrentViewComponent />
             ) : (
               <div className="flex items-center justify-center h-full text-slate-400">
-                <p>View not available yet</p>
+                <NotFoundPlaceholder />
               </div>
             )}
           </Suspense>
