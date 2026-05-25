@@ -8,8 +8,10 @@ import { Link2 } from "lucide-react";
 import Chart from "../components/Chart";
 import Button from "../components/Button";
 import Table from "../components/Table";
+// data
+import { overview as info } from "../static/Dashboard.info";
 
-const Overview = ({ info, handleViewChange }) => {
+const Overview = () => {
   return (
     <div className="space-y-8">
       {/* top instructions */}
@@ -20,7 +22,7 @@ const Overview = ({ info, handleViewChange }) => {
             Welcome back, here's what's happening with your links today.
           </Paragraph>
         </div>
-        <Button onClick={() => handleViewChange("links")}>
+        <Button>
           <Link2 className="w-4 h-4 mr-2" /> Create Link
         </Button>
       </div>
