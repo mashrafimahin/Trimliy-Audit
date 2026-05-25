@@ -1,17 +1,31 @@
 // dependencies
+import { useSlices } from "../hooks/useSlices";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
 // icons
-import { Link2 } from "lucide-react";
+import { Globe2, Activity, Link2, MousePointerClick } from "lucide-react";
 // components
 import Chart from "../components/Chart";
 import Button from "../components/Button";
 import Table from "../components/Table";
-// data
-import { overview as info } from "../static/Dashboard.info";
 
 const Overview = () => {
+  // state
+  const { data } = useSlices("overviewData");
+  // expected icons
+  const expectedIcons = [Link2, MousePointerClick, Activity, Globe2];
+  // filter data
+  const filteredData = data.stats.map((item, i) => ({
+    ...item,
+    icon: expectedIcons[i],
+  }));
+  // merged data
+  const info = {
+    ...data,
+    stats: filteredData,
+  };
+
   return (
     <div className="space-y-8">
       {/* top instructions */}
