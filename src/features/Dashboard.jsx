@@ -9,6 +9,7 @@ import Loader from "../components/Loader";
 import Input from "../components/Input";
 import Sidebar from "../components/Sidebar";
 import NotFoundPlaceholder from "../components/NotFoundPlaceholder";
+import PopUp from "../components/PopUp";
 // layouts
 import Overview from "../layout/Overview.layout";
 import Links from "../layout/Links.layout";
@@ -42,6 +43,8 @@ const Dashboard = () => {
     <div className="flex h-screen bg-navy-900 overflow-hidden">
       {/* sidebar */}
       <Sidebar />
+      {/* popup window  */}
+      {data.viewPopup && <PopUp linkCreation={true} />}
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 overflow-y-auto relative">
