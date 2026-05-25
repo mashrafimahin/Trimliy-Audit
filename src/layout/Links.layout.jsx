@@ -20,7 +20,7 @@ const Links = ({ info }) => {
           </Paragraph>
         </div>
         <Button>
-          <Plus className="w-5 h-5 mr-2" /> Create Link
+          <Plus className="w-5 h-5 mr-2" /> Create New
         </Button>
       </div>
 
