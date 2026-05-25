@@ -1,5 +1,11 @@
 // dependencies
-import { useState } from "react";
+import { useValidation } from "../hooks/useValidation";
+// states
+import { useProfileData } from "../hooks/useSlices";
+import {
+  handleEditButton,
+  updateInfo,
+} from "../app/features/ProfileSettingSlice";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
@@ -8,18 +14,20 @@ import { PenBoxIcon, User } from "lucide-react";
 // component
 import Input from "./Input";
 import Button from "./Button";
+import { useState } from "react";
 // style
 const commonStyle = "mb-0 mt-2 border border-slate-800 p-2 pl-4 rounded-md";
 
 // main
-const ProfileActionCard = ({ data }) => {
-  // state
-  const [edit, setEdit] = useState(false);
-  const [profileInfo, setProfileInfo] = useState(data.profileSetting);
+const ProfileActionCard = () => {
+  const { data, dispatch } = useProfileData("profileData");
+  const [profileInfo, setProfileInfo] = useState(data.info);
+  const [errors, setErrors] = useState({});
 
   // handle click
   const handleClick = () => {
-    setEdit((prevState) => !prevState);
+    setErrors({});
+    dispatch(handleEditButton());
   };
 
   // handle edit data
@@ -28,6 +36,26 @@ const ProfileActionCard = ({ data }) => {
       ...prevState,
       [event.target.name]: event.target.value,
     }));
+    // Clear error for this field when user starts typing
+    setErrors((prev) => ({
+      ...prev,
+      [event.target.name]: "",
+    }));
+  };
+
+  // save changed data
+  const saveChanges = () => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const result = useValidation(profileInfo);
+    console.log(result);
+    if (!result.isFormValid) {
+      setErrors(result.errors);
+      return;
+    }
+    console.log("clicked");
+    setErrors({});
+    dispatch(updateInfo(profileInfo));
+    dispatch(handleEditButton());
   };
 
   return (
@@ -38,7 +66,7 @@ const ProfileActionCard = ({ data }) => {
         {/* profile photo */}
         <div className="relative">
           <img
-            src={data.profileSetting.img}
+            src={data.info.img}
             alt="Avatar"
             className="w-20 h-20 rounded-full ring-4 ring-navy-900"
             draggable={false}
@@ -50,10 +78,10 @@ const ProfileActionCard = ({ data }) => {
         {/* profile details */}
         <div>
           <Header variant={"h3"} className={"mb-1 text-xl"}>
-            {`${data.profileSetting.firstName} ${data.profileSetting.lastName}`}
+            {`${data.info.firstName} ${data.info.lastName}`}
           </Header>
           <Paragraph variant={"small"} className={"mb-2 text-sm"}>
-            {data.profileSetting.userName}
+            {data.info.userName}
           </Paragraph>
         </div>
       </div>
@@ -65,17 +93,24 @@ const ProfileActionCard = ({ data }) => {
             <label className="text-sm font-medium text-slate-300">
               First Name
             </label>
-            {edit ? (
-              <Input
-                type={"text"}
-                name={"firstName"}
-                value={profileInfo.firstName}
-                setValue={updateState}
-                placeholder={profileInfo.firstName}
-              />
+            {data.settings.editing ? (
+              <>
+                <Input
+                  type={"text"}
+                  name={"firstName"}
+                  value={profileInfo.firstName}
+                  setValue={updateState}
+                  placeholder={data.info.firstName}
+                />
+                {errors.firstName && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.firstName}
+                  </p>
+                )}
+              </>
             ) : (
               <Paragraph variant={"small"} className={commonStyle}>
-                {profileInfo.firstName}
+                {data.info.firstName}
               </Paragraph>
             )}
           </div>
@@ -83,17 +118,22 @@ const ProfileActionCard = ({ data }) => {
             <label className="text-sm font-medium text-slate-300">
               Last Name
             </label>
-            {edit ? (
-              <Input
-                type={"text"}
-                name={"lastName"}
-                value={profileInfo.lastName}
-                setValue={updateState}
-                placeholder={profileInfo.lastName}
-              />
+            {data.settings.editing ? (
+              <>
+                <Input
+                  type={"text"}
+                  name={"lastName"}
+                  value={profileInfo.lastName}
+                  setValue={updateState}
+                  placeholder={data.info.lastName}
+                />
+                {errors.lastName && (
+                  <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                )}
+              </>
             ) : (
               <Paragraph variant={"small"} className={commonStyle}>
-                {profileInfo.lastName}
+                {data.info.lastName}
               </Paragraph>
             )}
           </div>
@@ -102,17 +142,22 @@ const ProfileActionCard = ({ data }) => {
           <label className="text-sm font-medium text-slate-300">
             Email Address
           </label>
-          {edit ? (
-            <Input
-              type={"email"}
-              name={"email"}
-              value={profileInfo.email}
-              setValue={updateState}
-              placeholder={profileInfo.email}
-            />
+          {data.settings.editing ? (
+            <>
+              <Input
+                type={"email"}
+                name={"email"}
+                value={profileInfo.email}
+                setValue={updateState}
+                placeholder={data.info.email}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
+            </>
           ) : (
             <Paragraph variant={"small"} className={commonStyle}>
-              {profileInfo.email}
+              {data.info.email}
             </Paragraph>
           )}
         </div>
@@ -120,28 +165,30 @@ const ProfileActionCard = ({ data }) => {
           <label className="text-sm font-medium text-slate-300">
             Company Name (Optional)
           </label>
-          {edit ? (
-            <Input
-              type={"text"}
-              name={"company"}
-              value={profileInfo.company}
-              setValue={updateState}
-              placeholder={profileInfo.company}
-            />
+          {data.settings.editing ? (
+            <>
+              <Input
+                type={"text"}
+                name={"company"}
+                value={profileInfo.company}
+                setValue={updateState}
+                placeholder={data.info.company}
+              />
+            </>
           ) : (
             <Paragraph variant={"small"} className={commonStyle}>
-              {profileInfo.company || "No company"}
+              {data.info.company || "No company"}
             </Paragraph>
           )}
         </div>
 
         <div className="pt-4 flex justify-end">
-          {edit ? (
+          {data.settings.editing ? (
             <div className="flex gap-4">
               <Button className={"bg-red-700"} onClick={handleClick}>
                 Cancel
               </Button>
-              <Button>Save Changes</Button>
+              <Button onClick={saveChanges}>Save Changes</Button>
             </div>
           ) : (
             <Button onClick={handleClick}>
