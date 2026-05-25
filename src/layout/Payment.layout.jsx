@@ -1,3 +1,5 @@
+// dependencies
+import { useSlices } from "../hooks/useSlices";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
@@ -7,7 +9,10 @@ import Button from "../components/Button";
 import { CheckCircle2, CreditCard, Download } from "lucide-react";
 
 // main
-const Payment = ({ info }) => {
+const Payment = () => {
+  // state
+  const { data } = useSlices("billingData");
+
   return (
     <div className="space-y-6">
       {/* header */}
@@ -32,7 +37,7 @@ const Payment = ({ info }) => {
                 Current Plan
               </Header>
               <Paragraph variant={"small"} className={"leading-snug"}>
-                {info.cardInfo.type}
+                {data.details.type}
               </Paragraph>
             </div>
           </div>
@@ -40,17 +45,17 @@ const Payment = ({ info }) => {
           <div className="mb-6 pb-6 border-b border-white/5">
             <div className="flex items-end gap-2 mb-2">
               <span className="text-3xl font-bold text-white">
-                ${info.cardInfo.cost}
+                ${data.details.cost}
               </span>
               <span className="text-slate-400 mb-1">/month</span>
             </div>
             <Paragraph variant={"small"} className="text-sm mb-0">
-              Next billing date: {info.cardInfo.nextBillingDate}
+              Next billing date: {data.details.nextBillingDate}
             </Paragraph>
           </div>
           {/* features */}
           <div className="space-y-3 mb-6">
-            {info.cardInfo.features.map((feature, i) => (
+            {data.details.features.map((feature, i) => (
               <div
                 key={i}
                 className="flex items-center gap-2 text-sm text-slate-300"
@@ -75,14 +80,14 @@ const Payment = ({ info }) => {
             <div className="flex items-center justify-between p-4 bg-navy-900 rounded-lg border border-white/5">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-6 bg-slate-800 rounded flex items-center justify-center text-xs font-bold text-white border border-white/10">
-                  {info.cardInfo.card}
+                  {data.details.card || "CARD"}
                 </div>
                 <div>
                   <p className="text-sm font-medium text-white">
-                    ****** {info.cardInfo.cardLastDigit}
+                    ****** {data.details.cardLastDigit || ""}
                   </p>
                   <p className="text-xs text-slate-400">
-                    Expires {info.cardInfo.expiryDate}
+                    Expires {data.details.expiryDate || "--"}
                   </p>
                 </div>
               </div>
@@ -95,24 +100,32 @@ const Payment = ({ info }) => {
               Billing History
             </Header>
             <div className="space-y-4">
-              {info.cardInfo.paymentHistory.map((invoice, i) => (
-                <div key={i} className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-white">
-                      {invoice.date}
-                    </p>
-                    <p className="text-xs text-emerald-400">{invoice.status}</p>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <span className="text-sm font-medium text-white">
-                      {invoice.amount}
-                    </span>
-                    <Button variant={"regular"}>
-                      <Download size={14} />
-                    </Button>
-                  </div>
+              {data.details.paymentHistory.length === 0 ? (
+                <div className="text-slate-400">
+                  No payment history available.
                 </div>
-              ))}
+              ) : (
+                data.details.paymentHistory.map((invoice, i) => (
+                  <div key={i} className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-white">
+                        {invoice.date}
+                      </p>
+                      <p className="text-xs text-emerald-400">
+                        {invoice.status}
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <span className="text-sm font-medium text-white">
+                        {invoice.amount}
+                      </span>
+                      <Button variant={"regular"}>
+                        <Download size={14} />
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
