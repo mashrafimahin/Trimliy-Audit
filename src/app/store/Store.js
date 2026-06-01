@@ -6,6 +6,7 @@ import BillingSettingData from "../features/BillingSettingSlice";
 import LinksSettingSlice from "../features/LinksSettingSlice";
 import FlowControlSlice from "../features/FlowControlSlice";
 import OverviewSlice from "../features/OverviewSlice";
+import SignUpSlice from "../features/SignUpSlice";
 
 const Store = configureStore({
   reducer: {
@@ -14,6 +15,7 @@ const Store = configureStore({
     billingData: BillingSettingData,
     linksData: LinksSettingSlice,
     flowControl: FlowControlSlice,
+    signUpControl: SignUpSlice,
   },
 });
 
