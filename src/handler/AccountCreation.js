@@ -14,8 +14,6 @@ export const AccountCreation = async (userData) => {
     const data = await response.json();
     // response
     if (data.success) {
-      // local storage
-      localStorage.setItem("refresh", data.refreshToken);
       // redirect
       setTimeout(() => {
         window.location.href = data.redirectTo;
