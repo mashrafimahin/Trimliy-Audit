@@ -1,6 +1,8 @@
 // dependencies
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
+import { useSlices } from "../hooks/useSlices";
+import { signUpThunk } from "../app/features/SignUpSlice";
 // icons
 import { Eye, EyeOff, GitCompareArrows, Mail } from "lucide-react";
 // typography
@@ -20,9 +22,10 @@ const cards = [
 
 // main
 function SignUp() {
+  // state
+  const { data, dispatch } = useSlices("signUpControl");
   // eye button controlled
   const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [formInfo, setFormInfo] = useState({
     firstName: "",
     lastName: "",
@@ -43,11 +46,6 @@ function SignUp() {
     setVisible((prevState) => !prevState);
   };
 
-  // handle clicks
-  const handleClick = () => {
-    setLoading(true);
-  };
-
   // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -61,8 +59,8 @@ function SignUp() {
       alert("You must need to fill the input boxes.");
       return;
     }
-    // button func
-    handleClick();
+    // save data
+    dispatch(signUpThunk(formInfo));
   };
 
   // auto scroll
@@ -182,10 +180,14 @@ function SignUp() {
               {/* button */}
               <Button
                 type={"submit"}
-                className={`min-w-full mt-8 ${loading ? "bg-blue-600/50 cursor-no-drop" : ""}`}
-                disabled={loading}
+                className={`min-w-full mt-8 ${data.isLoading || data.isComplete ? "bg-blue-600/50 cursor-no-drop" : ""}`}
+                disabled={data.isLoading || data.isComplete}
               >
-                {loading ? "Creating Account ..." : "Sign Up"}
+                {data.isLoading
+                  ? "Creating Account ..."
+                  : data.isComplete
+                    ? "Account Created Successfully"
+                    : "Sign Up"}
               </Button>
             </form>
 
