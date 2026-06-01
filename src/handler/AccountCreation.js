@@ -2,17 +2,26 @@
 export const AccountCreation = async (userData) => {
   try {
     // request server
-    await fetch(import.meta.env.VITE_ACCOUNT_CREATION, {
+    const response = await fetch(import.meta.env.VITE_ACCOUNT_CREATION, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
+      credentials: "include",
     });
-    // return status
-    return true;
+    // actions
+    const data = await response.json();
+    // response
+    if (data.success) {
+      // local storage
+      localStorage.setItem("refresh", data.refreshToken);
+      // redirect
+      setTimeout(() => {
+        window.location.href = data.redirectTo;
+      }, 800);
+    }
   } catch (err) {
     console.log(err);
-    return false;
   }
 };
