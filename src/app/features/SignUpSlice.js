@@ -9,7 +9,9 @@ const info = {
 };
 
 // thunk function
-export const signUpThunk = createAsyncThunk("user/signup", AccountCreation);
+export const signUpThunk = createAsyncThunk("user/signup", async (formInfo) => {
+  await AccountCreation(formInfo);
+});
 
 // slice
 const signUpSlice = createSlice({
