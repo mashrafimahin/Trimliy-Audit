@@ -6,7 +6,7 @@ import { Outlet, Navigate } from "react-router";
 const RouteHandler = () => {
   const auth = useAuth();
 
-  return auth ? <Outlet /> : <Navigate to="/login" />;
+  return auth.logged_in ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default RouteHandler;
