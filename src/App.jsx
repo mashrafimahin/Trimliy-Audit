@@ -1,7 +1,6 @@
 // dependencies
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router";
-// auth handler
 import { useAuth } from "./hooks/useAuth";
 // route handler
 import RouteHandler from "./utils/RouteHandler";
