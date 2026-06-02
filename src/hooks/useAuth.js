@@ -1,32 +1,9 @@
 // dependencies
-import { useState, useEffect } from "react";
+import { useSlices } from "./useSlices";
 
 export const useAuth = () => {
   // state
-  const [auth, setAuth] = useState(true);
-  const reference = {
-    userId: localStorage.getItem("user_id"),
-    refreshToken: localStorage.getItem("refresh"),
-  };
+  const { data } = useSlices("authControl");
 
-  // get value from server
-  useEffect(() => {
-    const checkFunc = async () => {
-      const response = await fetch(import.meta.env.VITE_ACCOUNT_CHECK, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(reference),
-        credentials: "include",
-      });
-
-      const data = await response.json();
-      setAuth(data.success);
-    };
-
-    checkFunc();
-  }, []);
-
-  return auth;
+  return data;
 };
