@@ -23,7 +23,7 @@ export const info = {
     buttonOne: "Get Started",
     buttonOneLink: "signup",
     buttonTwo: "Explore Now",
-    buttonTwoLink: "about",
+    buttonTwoLink: "",
     extendedImage: true,
     extendedImageSource:
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=2070",
