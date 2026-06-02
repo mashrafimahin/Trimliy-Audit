@@ -1,26 +1,28 @@
-// dependencies
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { checkFunc } from "../../handler/Authentication";
+import AuthCheck from "../../handler/AuthCheck";
 
-// initial state
-const info = {
+const initialState = {
   logged_in: false,
-  isLoading: false,
+  isLoading: true,
 };
 
-// thunk function
 export const AuthThunk = createAsyncThunk(
-  "user/authentication",
-  async (local_data) => {
-    const state = await checkFunc(local_data);
-    return state;
+  "authentication/check",
+  async (_, thunkAPI) => {
+    try {
+      const result = await AuthCheck();
+
+      return result;
+      // eslint-disable-next-line no-unused-vars
+    } catch (err) {
+      return thunkAPI.rejectWithValue(false);
+    }
   },
 );
 
-// slice
-const authSlice = createSlice({
-  name: "authSlice",
-  initialState: info,
+const authenticationSlice = createSlice({
+  name: "authentication",
+  initialState,
   extraReducers: (builder) => {
     builder
       .addCase(AuthThunk.pending, (state) => {
@@ -37,5 +39,4 @@ const authSlice = createSlice({
   },
 });
 
-// exports
-export default authSlice.reducer;
+export default authenticationSlice.reducer;
