@@ -1,6 +1,7 @@
 // dependencies
 import { configureStore } from "@reduxjs/toolkit";
 // slices
+import AuthenticationSlice from "../features/AuthenticationSlice";
 import ProfileSettingData from "../features/ProfileSettingSlice";
 import BillingSettingData from "../features/BillingSettingSlice";
 import LinksSettingSlice from "../features/LinksSettingSlice";
@@ -11,6 +12,7 @@ import LogInSlice from "../features/LogInSlice";
 
 const Store = configureStore({
   reducer: {
+    authControl: AuthenticationSlice,
     overviewData: OverviewSlice,
     profileData: ProfileSettingData,
     billingData: BillingSettingData,
