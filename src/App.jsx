@@ -1,7 +1,8 @@
 // dependencies
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router";
-import { useAuth } from "./hooks/useAuth";
+import { useSlices } from "./hooks/useSlices";
+import { AuthThunk } from "./app/features/AuthenticationSlice";
 // route handler
 import RouteHandler from "./utils/RouteHandler";
 // loader
@@ -18,9 +19,15 @@ const Dashboard = lazy(() => import("./features/Dashboard"));
 // main
 function App() {
   // auth checkpoint
-  const auth = useAuth();
+  const { data, dispatch } = useSlices("authControl");
 
-  if (auth.isLoading) {
+  // on mount
+  useEffect(() => {
+    dispatch(AuthThunk());
+  }, [dispatch]);
+
+  // loading state
+  if (data.isLoading) {
     return <Loader />;
   }
 
@@ -32,7 +39,7 @@ function App() {
           <Route
             path="/"
             element={
-              auth.logged_in ? <Navigate to={"/dashboard"} replace /> : <Home />
+              data.logged_in ? <Navigate to={"/dashboard"} replace /> : <Home />
             }
           />
           <Route path="/login" element={<Login />} />
