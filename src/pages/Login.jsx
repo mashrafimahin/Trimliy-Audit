@@ -1,6 +1,8 @@
 // dependencies
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
+import { useSlices } from "../hooks/useSlices";
+import { LoginThunk } from "../app/features/LogInSlice";
 // icons
 import { Eye, EyeOff, GitCompareArrows, Link2, Mail } from "lucide-react";
 // typography
@@ -12,6 +14,9 @@ import Button from "../components/Button";
 // layouts
 // main
 function Login() {
+  // states
+  const { dispatch } = useSlices("loginControl");
+
   // eye button controlled
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -48,6 +53,9 @@ function Login() {
     }
     // button func
     handleClick();
+
+    // login
+    dispatch(LoginThunk(formInfo));
   };
 
   // auto scroll
