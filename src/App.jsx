@@ -21,6 +21,10 @@ function App() {
   // auth checkpoint
   const auth = useAuth();
 
+  if (auth.isLoading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <Suspense fallback={<Loader />}>
@@ -28,7 +32,9 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={auth ? <Navigate to={"/dashboard"} replace /> : <Home />}
+            element={
+              auth.logged_in ? <Navigate to={"/dashboard"} replace /> : <Home />
+            }
           />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
