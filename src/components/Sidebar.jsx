@@ -2,8 +2,9 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import { useSlices } from "../hooks/useSlices";
+import { AccountLogOut } from "../handler/AccountLogOut";
 // icons
-import { Link as LinkIcon } from "lucide-react";
+import { Link as LinkIcon, LogOut } from "lucide-react";
 //  utility tools
 import { cn } from "../utils/ClassMerger";
 import {
@@ -24,6 +25,11 @@ const Sidebar = () => {
     setIsActive(path);
     dispatch(handleView(path));
     dispatch(handleMobileToggle());
+  };
+
+  // handle logout
+  const handleLogOut = async () => {
+    await AccountLogOut();
   };
 
   return (
@@ -71,6 +77,13 @@ const Sidebar = () => {
               <span>{item.name}</span>
             </button>
           ))}
+          <button
+            onClick={handleLogOut}
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all group cursor-pointer text-slate-400 hover:bg-red-500/10 hover:text-red-400"
+          >
+            <LogOut className="w-5 h-5 shrink-0 text-slate-500 group-hover:text-red-400" />
+            <span>LogOut</span>
+          </button>
         </nav>
       </aside>
     </div>
