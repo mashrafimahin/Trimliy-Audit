@@ -1,12 +1,15 @@
-// dependencies
-import { useAuth } from "../hooks/useAuth";
-import { Outlet, Navigate } from "react-router";
+import { Navigate, Outlet } from "react-router";
+import { useSlices } from "../hooks/useSlices";
+import Loader from "../components/Loader";
 
-// main
 const RouteHandler = () => {
-  const auth = useAuth();
+  const { data } = useSlices("authControl");
 
-  return auth.logged_in ? <Outlet /> : <Navigate to="/login" />;
+  if (data.isLoading) {
+    return <Loader />;
+  }
+
+  return data.logged_in ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default RouteHandler;
