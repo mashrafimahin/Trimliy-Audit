@@ -12,7 +12,6 @@ export const AccountLogin = async (userData) => {
     });
     // actions
     const data = await response.json();
-    console.log(data);
     // response
     if (data.success) {
       // save reference to local storage
@@ -22,8 +21,11 @@ export const AccountLogin = async (userData) => {
       setTimeout(() => {
         window.location.href = data.redirectTo;
       }, 800);
+    } else {
+      throw Error(data.error);
     }
   } catch (err) {
-    console.log(err);
+    // console.log(err?.message);
+    return err?.message;
   }
 };

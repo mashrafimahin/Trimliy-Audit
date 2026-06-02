@@ -15,11 +15,10 @@ import Button from "../components/Button";
 // main
 function Login() {
   // states
-  const { dispatch } = useSlices("loginControl");
+  const { data, dispatch } = useSlices("loginControl");
 
   // eye button controlled
   const [visible, setVisible] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [formInfo, setFormInfo] = useState({
     email: "",
     password: "",
@@ -38,11 +37,6 @@ function Login() {
     setVisible((prevState) => !prevState);
   };
 
-  // handle clicks
-  const handleClick = () => {
-    setLoading(true);
-  };
-
   // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,8 +45,6 @@ function Login() {
       alert("You must need to fill the input boxes.");
       return;
     }
-    // button func
-    handleClick();
 
     // login
     dispatch(LoginThunk(formInfo));
@@ -157,14 +149,21 @@ function Login() {
                     {!visible ? <Eye size={20} /> : <EyeOff size={20} />}
                   </span>
                 </div>
+                {data.error && (
+                  <div>
+                    <p className="text-red-500 font-semibold text-md text-center">
+                      {data.info}
+                    </p>
+                  </div>
+                )}
               </div>
               {/* login */}
               <Button
                 type={"submit"}
-                className={`min-w-full mt-8 ${loading ? "bg-blue-600/50 cursor-no-drop" : ""}`}
-                disabled={loading}
+                className={`min-w-full mt-8 ${data.isLoading ? "bg-blue-600/50 cursor-no-drop" : ""}`}
+                disabled={data.isLoading}
               >
-                {loading ? "Singing In ..." : "Sign In"}
+                {data.isLoading ? "Singing In ..." : "Sign In"}
               </Button>
             </form>
 
