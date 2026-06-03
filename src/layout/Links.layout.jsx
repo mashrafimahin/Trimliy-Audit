@@ -12,7 +12,7 @@ import { Plus } from "lucide-react";
 
 const Links = () => {
   // state
-  const { data } = useSlices("linksData");
+  const { data } = useSlices("overviewData");
   const { dispatch } = useSlices("flowControl");
 
   // handle popup control

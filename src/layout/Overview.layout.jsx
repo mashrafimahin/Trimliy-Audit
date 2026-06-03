@@ -18,13 +18,13 @@ const Overview = () => {
   // expected icons
   const expectedIcons = [Link2, MousePointerClick, Activity, Globe2];
   // filter data
-  const filteredData = data.stats.map((item, i) => ({
+  const filteredData = data.overview.stats.map((item, i) => ({
     ...item,
     icon: expectedIcons[i],
   }));
   // merged data
   const info = {
-    ...data,
+    ...data.overview,
     stats: filteredData,
   };
 

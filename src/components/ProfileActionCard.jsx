@@ -2,10 +2,7 @@
 import { useValidation } from "../hooks/useValidation";
 // states
 import { useSlices } from "../hooks/useSlices";
-import {
-  handleEditButton,
-  updateInfo,
-} from "../app/features/ProfileSettingSlice";
+import { handleEditButton, updateInfo } from "../app/features/OverviewSlice";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
@@ -20,8 +17,8 @@ const commonStyle = "mb-0 mt-2 border border-slate-800 p-2 pl-4 rounded-md";
 
 // main
 const ProfileActionCard = () => {
-  const { data, dispatch } = useSlices("profileData");
-  const [profileInfo, setProfileInfo] = useState(data.info);
+  const { data, dispatch } = useSlices("overviewData");
+  const [profileInfo, setProfileInfo] = useState(data.profile.info);
   const [errors, setErrors] = useState({});
 
   // handle click
@@ -66,7 +63,7 @@ const ProfileActionCard = () => {
         {/* profile photo */}
         <div className="relative">
           <img
-            src={data.info.img}
+            src={data.profile.info.img}
             alt="Avatar"
             className="w-20 h-20 rounded-full ring-4 ring-navy-900"
             draggable={false}
@@ -78,10 +75,10 @@ const ProfileActionCard = () => {
         {/* profile details */}
         <div>
           <Header variant={"h3"} className={"mb-1 text-xl"}>
-            {`${data.info.firstName} ${data.info.lastName}`}
+            {`${data.profile.info.firstName} ${data.profile.info.lastName}`}
           </Header>
           <Paragraph variant={"small"} className={"mb-2 text-sm"}>
-            {data.info.userName}
+            {data.profile.info.userName}
           </Paragraph>
         </div>
       </div>
@@ -93,14 +90,14 @@ const ProfileActionCard = () => {
             <label className="text-sm font-medium text-slate-300">
               First Name
             </label>
-            {data.settings.editing ? (
+            {data.profile.settings.editing ? (
               <>
                 <Input
                   type={"text"}
                   name={"firstName"}
                   value={profileInfo.firstName}
                   setValue={updateState}
-                  placeholder={data.info.firstName}
+                  placeholder={data.profile.info.firstName}
                 />
                 {errors.firstName && (
                   <p className="text-red-500 text-sm mt-1">
@@ -110,7 +107,7 @@ const ProfileActionCard = () => {
               </>
             ) : (
               <Paragraph variant={"small"} className={commonStyle}>
-                {data.info.firstName}
+                {data.profile.info.firstName}
               </Paragraph>
             )}
           </div>
@@ -118,14 +115,14 @@ const ProfileActionCard = () => {
             <label className="text-sm font-medium text-slate-300">
               Last Name
             </label>
-            {data.settings.editing ? (
+            {data.profile.settings.editing ? (
               <>
                 <Input
                   type={"text"}
                   name={"lastName"}
                   value={profileInfo.lastName}
                   setValue={updateState}
-                  placeholder={data.info.lastName}
+                  placeholder={data.profile.info.lastName}
                 />
                 {errors.lastName && (
                   <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -133,7 +130,7 @@ const ProfileActionCard = () => {
               </>
             ) : (
               <Paragraph variant={"small"} className={commonStyle}>
-                {data.info.lastName}
+                {data.profile.info.lastName}
               </Paragraph>
             )}
           </div>
@@ -142,14 +139,14 @@ const ProfileActionCard = () => {
           <label className="text-sm font-medium text-slate-300">
             Email Address
           </label>
-          {data.settings.editing ? (
+          {data.profile.settings.editing ? (
             <>
               <Input
                 type={"email"}
                 name={"email"}
                 value={profileInfo.email}
                 setValue={updateState}
-                placeholder={data.info.email}
+                placeholder={data.profile.info.email}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -157,7 +154,7 @@ const ProfileActionCard = () => {
             </>
           ) : (
             <Paragraph variant={"small"} className={commonStyle}>
-              {data.info.email}
+              {data.profile.info.email}
             </Paragraph>
           )}
         </div>
@@ -165,25 +162,25 @@ const ProfileActionCard = () => {
           <label className="text-sm font-medium text-slate-300">
             Company Name (Optional)
           </label>
-          {data.settings.editing ? (
+          {data.profile.settings.editing ? (
             <>
               <Input
                 type={"text"}
                 name={"company"}
                 value={profileInfo.company}
                 setValue={updateState}
-                placeholder={data.info.company}
+                placeholder={data.profile.info.company}
               />
             </>
           ) : (
             <Paragraph variant={"small"} className={commonStyle}>
-              {data.info.company || "No company"}
+              {data.profile.info.company || "No company"}
             </Paragraph>
           )}
         </div>
 
         <div className="pt-4 flex justify-end">
-          {data.settings.editing ? (
+          {data.profile.settings.editing ? (
             <div className="flex gap-4">
               <Button className={"bg-red-700"} onClick={handleClick}>
                 Cancel
