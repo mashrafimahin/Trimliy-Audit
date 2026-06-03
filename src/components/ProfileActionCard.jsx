@@ -2,12 +2,13 @@
 import { useValidation } from "../hooks/useValidation";
 // states
 import { useSlices } from "../hooks/useSlices";
-import { handleEditButton, updateInfo } from "../app/features/OverviewSlice";
+import { handleEditButton } from "../app/features/OverviewSlice";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
 // icon
 import { PenBoxIcon, User } from "lucide-react";
+import UserPlaceholder from "../assets/icons/userPlaceholder.webp";
 // component
 import Input from "./Input";
 import Button from "./Button";
@@ -18,7 +19,7 @@ const commonStyle = "mb-0 mt-2 border border-slate-800 p-2 pl-4 rounded-md";
 // main
 const ProfileActionCard = () => {
   const { data, dispatch } = useSlices("overviewData");
-  const [profileInfo, setProfileInfo] = useState(data.profile.info);
+  const [profileInfo, setProfileInfo] = useState(...data.profile.info);
   const [errors, setErrors] = useState({});
 
   // handle click
@@ -49,10 +50,10 @@ const ProfileActionCard = () => {
       setErrors(result.errors);
       return;
     }
-    console.log("clicked");
     setErrors({});
-    dispatch(updateInfo(profileInfo));
+    // handle edit
     dispatch(handleEditButton());
+    //! update info
   };
 
   return (
@@ -63,10 +64,11 @@ const ProfileActionCard = () => {
         {/* profile photo */}
         <div className="relative">
           <img
-            src={data.profile.info.img}
+            src={profileInfo.img || UserPlaceholder}
             alt="Avatar"
             className="w-20 h-20 rounded-full ring-4 ring-navy-900"
             draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
           />
           <button className="absolute bottom-0 right-0 bg-blue-600 p-1.5 rounded-full border-2 border-navy-900 text-white hover:bg-blue-700 transition-colors">
             <User className="w-4 h-4" />
@@ -75,10 +77,10 @@ const ProfileActionCard = () => {
         {/* profile details */}
         <div>
           <Header variant={"h3"} className={"mb-1 text-xl"}>
-            {`${data.profile.info.firstName} ${data.profile.info.lastName}`}
+            {`${profileInfo.firstName} ${profileInfo.lastName}`}
           </Header>
           <Paragraph variant={"small"} className={"mb-2 text-sm"}>
-            {data.profile.info.userName}
+            {`@${profileInfo.userId}`}
           </Paragraph>
         </div>
       </div>
@@ -97,7 +99,7 @@ const ProfileActionCard = () => {
                   name={"firstName"}
                   value={profileInfo.firstName}
                   setValue={updateState}
-                  placeholder={data.profile.info.firstName}
+                  placeholder={profileInfo.firstName}
                 />
                 {errors.firstName && (
                   <p className="text-red-500 text-sm mt-1">
@@ -107,7 +109,7 @@ const ProfileActionCard = () => {
               </>
             ) : (
               <Paragraph variant={"small"} className={commonStyle}>
-                {data.profile.info.firstName}
+                {profileInfo.firstName}
               </Paragraph>
             )}
           </div>
@@ -122,7 +124,7 @@ const ProfileActionCard = () => {
                   name={"lastName"}
                   value={profileInfo.lastName}
                   setValue={updateState}
-                  placeholder={data.profile.info.lastName}
+                  placeholder={profileInfo.lastName}
                 />
                 {errors.lastName && (
                   <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -130,7 +132,7 @@ const ProfileActionCard = () => {
               </>
             ) : (
               <Paragraph variant={"small"} className={commonStyle}>
-                {data.profile.info.lastName}
+                {profileInfo.lastName}
               </Paragraph>
             )}
           </div>
@@ -146,7 +148,7 @@ const ProfileActionCard = () => {
                 name={"email"}
                 value={profileInfo.email}
                 setValue={updateState}
-                placeholder={data.profile.info.email}
+                placeholder={profileInfo.email}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -154,7 +156,7 @@ const ProfileActionCard = () => {
             </>
           ) : (
             <Paragraph variant={"small"} className={commonStyle}>
-              {data.profile.info.email}
+              {profileInfo.email}
             </Paragraph>
           )}
         </div>
@@ -169,12 +171,12 @@ const ProfileActionCard = () => {
                 name={"company"}
                 value={profileInfo.company}
                 setValue={updateState}
-                placeholder={data.profile.info.company}
+                placeholder={profileInfo.company || "no company"}
               />
             </>
           ) : (
             <Paragraph variant={"small"} className={commonStyle}>
-              {data.profile.info.company || "No company"}
+              {profileInfo.company || "No company"}
             </Paragraph>
           )}
         </div>
