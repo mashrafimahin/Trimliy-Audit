@@ -37,7 +37,7 @@ const Links = () => {
 
       {/* link lists */}
       <div className="space-y-4">
-        {data.links.map((item, i) => (
+        {data.overview.recentLinks.map((item, i) => (
           <LinkBox key={i} item={item} />
         ))}
       </div>
