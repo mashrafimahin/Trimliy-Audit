@@ -1,11 +1,8 @@
 // dependencies
 import { useState, useRef, useEffect } from "react";
-// utils
-import { cn } from "../utils/ClassMerger";
 // icons
 import {
   Calendar,
-  Lock,
   Globe2,
   MoreHorizontal,
   QrCode,
@@ -49,23 +46,14 @@ const LinkBox = ({ item }) => {
                 "text-lg font-semibold truncate mb-0 hover:underline cursor-pointer"
               }
             >
-              {item.short}
+              {item.shortURL || "not found"}
             </Header>
-            <div
-              className={cn(
-                "flex items-center p-1 px-3 rounded-full text-xs border",
-                item.status === "Inactive"
-                  ? "bg-slate-700 text-slate-200 border-slate-300"
-                  : "bg-green-500/10 text-green-400 border-green-600",
-              )}
-            >
-              <Lock className="w-3 h-3 mr-1" /> {item.status}
-            </div>
           </div>
-          <Paragraph variant={"small"}>{item.original}</Paragraph>
+          <Paragraph variant={"small"}>{item.fullURL || "not found"}</Paragraph>
           <div className="flex items-center gap-4 mt-3 text-xs text-slate-500">
             <span className="flex items-center gap-1">
-              <Calendar className="w-3 h-3" /> {item.date}
+              <Calendar className="w-3 h-3" />{" "}
+              {item.createdDate || "00-00-2000"}
             </span>
             <span className="flex items-center gap-1">
               <QrCode className="w-3 h-3" /> QR Inactive
@@ -77,7 +65,7 @@ const LinkBox = ({ item }) => {
       {/* right side */}
       <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end border-t border-white/5 md:border-t-0 pt-4 md:pt-0">
         <div className="text-center md:text-right">
-          <div className="text-lg font-bold text-white">{item.clicks}</div>
+          <div className="text-lg font-bold text-white">{item.clicks || 0}</div>
           <div className="text-xs text-slate-500">Total Clicks</div>
         </div>
         <div className="flex gap-2">
