@@ -1,7 +1,8 @@
 // dependencies
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 import { useSlices } from "../hooks/useSlices";
 import { handleMobileToggle } from "../app/features/FlowControlSlice";
+import { OverviewThunk } from "../app/features/OverviewSlice";
 // icons
 import { Search, Bell, Menu } from "lucide-react";
 // components
@@ -30,6 +31,7 @@ const VIEW_COMPONENTS = {
 const Dashboard = () => {
   // state
   const { data, dispatch } = useSlices("flowControl");
+  const { dispatch: fetchDispatch } = useSlices("overviewData");
 
   // Get current view component
   const CurrentViewComponent = VIEW_COMPONENTS[data.activeView];
@@ -38,6 +40,11 @@ const Dashboard = () => {
   const handleToggle = () => {
     dispatch(handleMobileToggle());
   };
+
+  // fetch data
+  useEffect(() => {
+    fetchDispatch(OverviewThunk());
+  }, [fetchDispatch]);
 
   return (
     <div className="flex h-screen bg-navy-900 overflow-hidden">
