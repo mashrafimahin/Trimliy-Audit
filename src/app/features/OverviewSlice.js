@@ -21,25 +21,25 @@ const status = {
     stats: [
       {
         label: "Total Links",
-        value: "142",
+        value: 0,
         color: "text-blue-500",
         bg: "bg-blue-500/10",
       },
       {
         label: "Total Clicks",
-        value: "48.2K",
+        value: 0,
         color: "text-purple-500",
         bg: "bg-purple-500/10",
       },
       {
         label: "Avg. CTR",
-        value: "24.8%",
+        value: 0,
         color: "text-cyan-500",
         bg: "bg-cyan-500/10",
       },
       {
         label: "Top Location",
-        value: "USA",
+        value: 0,
         color: "text-emerald-500",
         bg: "bg-emerald-500/10",
       },
@@ -50,24 +50,7 @@ const status = {
       { name: "Tablet", percent: 7, color: "bg-cyan-500" },
     ],
   },
-  links: [
-    {
-      id: 1,
-      original: "https://github.com/features/actions",
-      short: "trim.ly/gh-actions",
-      clicks: "12.4K",
-      date: "24-10-2026",
-      status: "Active",
-    },
-    {
-      id: 2,
-      original: "https://linear.app/features",
-      short: "trim.ly/linear",
-      clicks: "8.2K",
-      date: "24-10-2026",
-      status: "Active",
-    },
-  ],
+  links: [],
   profile: {
     info: {
       img: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
@@ -114,6 +97,7 @@ const OverviewSlice = createSlice({
 
         // set custom data
         state.overview.recentLinks.push(...action.payload.urlData);
+        state.links.push(...action.payload.urlData);
         state.profile.info = action.payload.userData;
         // console.log(action.payload.userData);
       })
