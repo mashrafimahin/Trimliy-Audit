@@ -31,39 +31,36 @@ const Table = ({ data }) => {
       </thead>
       {/* table data */}
       <tbody className="divide-y divide-white/5">
-        {data.map((link) => (
-          <tr
-            key={link.id}
-            className="hover:bg-white/2 transition-colors group"
-          >
+        {data.map((link, i) => (
+          <tr key={i} className="hover:bg-white/2 transition-colors group">
             <td className="px-6 py-4">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
                   <Link2 className="w-4 h-4 text-blue-400" />
                 </div>
-                <span className="font-medium text-white">{link.short}</span>
+                <span className="font-medium text-white hover:underline cursor-pointer">
+                  {link.shortURL}
+                </span>
               </div>
             </td>
             <td className="px-6 py-4 hidden sm:table-cell">
               <span className="text-sm text-slate-400 truncate max-w-50 inline-block">
-                {link.original}
+                {link.fullURL}
               </span>
             </td>
             <td className="px-6 py-4 text-sm text-slate-300 font-medium">
               {link.clicks}
             </td>
             <td className="px-6 py-4 text-sm text-slate-500 hidden md:table-cell">
-              {link.date}
+              {link.createdDate}
             </td>
             <td className="px-6 py-4">
               <div
                 className={
-                  link.status !== "Active"
-                    ? "bg-slate-500/50 text-sm p-0.5 text-white rounded-full text-center"
-                    : "bg-green-500/70 text-sm p-0.5 text-white rounded-full text-center"
+                  "bg-green-500/70 text-sm p-0.5 px-2 text-white rounded-full text-center"
                 }
               >
-                {link.status}
+                Active
               </div>
             </td>
             <td className="px-6 py-4 text-right">
