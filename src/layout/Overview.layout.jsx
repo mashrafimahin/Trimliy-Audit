@@ -42,8 +42,6 @@ const Overview = () => {
     stats: filteredStatsData,
   };
 
-  console.log(info.recentLinks);
-
   // handle popup control
   const handlePopup = () => {
     dispatch(handlePopupView());
