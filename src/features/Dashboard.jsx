@@ -31,7 +31,8 @@ const VIEW_COMPONENTS = {
 const Dashboard = () => {
   // state
   const { data, dispatch } = useSlices("flowControl");
-  const { dispatch: fetchDispatch } = useSlices("overviewData");
+  const { data: fetchData, dispatch: fetchDispatch } =
+    useSlices("overviewData");
 
   // Get current view component
   const CurrentViewComponent = VIEW_COMPONENTS[data.activeView];
@@ -45,6 +46,11 @@ const Dashboard = () => {
   useEffect(() => {
     fetchDispatch(OverviewThunk());
   }, [fetchDispatch]);
+
+  // check if loader activate
+  if (fetchData.isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div className="flex h-screen bg-navy-900 overflow-hidden">
