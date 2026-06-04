@@ -45,7 +45,7 @@ const Dashboard = () => {
   // fetch data
   useEffect(() => {
     fetchDispatch(OverviewThunk());
-  }, [fetchDispatch]);
+  }, []);
 
   // check if loader activate
   if (fetchData.isLoading) {
