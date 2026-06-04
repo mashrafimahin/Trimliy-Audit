@@ -45,6 +45,7 @@ const Dashboard = () => {
   // fetch data
   useEffect(() => {
     fetchDispatch(OverviewThunk());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // check if loader activate
