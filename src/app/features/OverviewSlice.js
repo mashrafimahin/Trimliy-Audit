@@ -96,8 +96,8 @@ const OverviewSlice = createSlice({
         state.isError = false;
 
         // set custom data
-        state.overview.recentLinks.push(...action.payload.urlData);
-        state.links.push(...action.payload.urlData);
+        state.overview.recentLinks = action.payload.urlData;
+        state.links = action.payload.urlData;
         state.profile.info = action.payload.userData;
         // console.log(action.payload.userData);
       })
