@@ -15,18 +15,34 @@ const Overview = () => {
   // state
   const { data } = useSlices("overviewData");
   const { dispatch } = useSlices("flowControl");
-  // expected icons
+  // expected icons & data
   const expectedIcons = [Link2, MousePointerClick, Activity, Globe2];
+  const totalLinks = data.links.length;
+  const totalClicks = data.links.reduce((acc, curr) => acc + curr.clicks, 0);
+  const slicedCountDigitOne = String(totalClicks).slice(0, 1);
+  const slicedCountDigitTwo = String(totalClicks).slice(1, 3);
+  // data array
+  const expectedValues = [
+    totalLinks < 10 ? "0" + totalLinks : totalLinks,
+    totalClicks > 999
+      ? Number([slicedCountDigitOne, slicedCountDigitTwo].join(".")) + "K"
+      : totalClicks,
+    `${totalClicks / totalLinks}%`,
+    "USA",
+  ];
   // filter data
-  const filteredData = data.overview.stats.map((item, i) => ({
+  const filteredStatsData = data.overview.stats.map((item, i) => ({
     ...item,
+    value: expectedValues[i],
     icon: expectedIcons[i],
   }));
   // merged data
   const info = {
     ...data.overview,
-    stats: filteredData,
+    stats: filteredStatsData,
   };
+
+  console.log(info.recentLinks);
 
   // handle popup control
   const handlePopup = () => {
@@ -84,12 +100,6 @@ const Overview = () => {
                 Total clicks over the last 7 days
               </Paragraph>
             </div>
-            {/* selection */}
-            <select className="bg-navy-900 border border-white/10 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>Last 7 days</option>
-              <option>Last 30 days</option>
-              <option>This Year</option>
-            </select>
           </div>
           {/* chart view */}
           <div className="h-75 p-6 pb-2 w-full">
@@ -141,7 +151,6 @@ const Overview = () => {
           <Header variant={"h3"} className={"text-2xl"}>
             Recent Links
           </Header>
-          <Button>View All</Button>
         </div>
         {/* table of contents */}
         <div className="overflow-x-auto">
