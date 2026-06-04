@@ -162,23 +162,11 @@ const ProfileActionCard = () => {
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium text-slate-300">
-            Company Name (Optional)
+            URL Handles
           </label>
-          {data.profile.settings.editing ? (
-            <>
-              <Input
-                type={"text"}
-                name={"company"}
-                value={profileInfo.company}
-                setValue={updateState}
-                placeholder={profileInfo.company || "no company"}
-              />
-            </>
-          ) : (
-            <Paragraph variant={"small"} className={commonStyle}>
-              {profileInfo.company || "No company"}
-            </Paragraph>
-          )}
+          <Paragraph variant={"small"} className={commonStyle}>
+            {profileInfo.urlHandles || "Not yet"}
+          </Paragraph>
         </div>
 
         <div className="pt-4 flex justify-end">
