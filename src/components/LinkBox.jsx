@@ -1,36 +1,12 @@
 // dependencies
-import { useState, useRef, useEffect } from "react";
 // icons
-import {
-  Calendar,
-  Globe2,
-  MoreHorizontal,
-  QrCode,
-  Edit,
-  Trash2,
-} from "lucide-react";
+import { Calendar, Globe2, QrCode, Trash2, Copy, Edit2 } from "lucide-react";
 // components
-import Button from "./Button";
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
 
 // main
 const LinkBox = ({ item }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
-
-  // Close menu when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   return (
     <div className="p-5 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between group">
       {/* left side */}
@@ -46,7 +22,14 @@ const LinkBox = ({ item }) => {
                 "text-lg font-semibold truncate mb-0 hover:underline cursor-pointer"
               }
             >
-              {item.shortURL || "not found"}
+              <a
+                //! Need to Change Link
+                href={`http://localhost:8380/${item.shortURL}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {item.shortURL || "not found"}
+              </a>
             </Header>
           </div>
           <Paragraph variant={"small"}>{item.fullURL || "not found"}</Paragraph>
@@ -64,43 +47,25 @@ const LinkBox = ({ item }) => {
 
       {/* right side */}
       <div className="flex items-center gap-6 w-full md:w-auto justify-between md:justify-end border-t border-white/5 md:border-t-0 pt-4 md:pt-0">
+        {/* clicks count */}
         <div className="text-center md:text-right">
-          <div className="text-lg font-bold text-white">{item.clicks || 0}</div>
+          <div className="text-lg font-bold text-white">
+            {item.clicks < 10 ? "0" + item.clicks : item.clicks || 0}
+          </div>
           <div className="text-xs text-slate-500">Total Clicks</div>
         </div>
+        {/* action buttons */}
         <div className="flex gap-2">
-          <Button variant={"regular"}>Copy</Button>
-          <div className="relative" ref={menuRef}>
-            <button
-              onClick={() => setIsMenuOpen((prevState) => !prevState)}
-              className="p-2 px-4 bg-slate-900 rounded-md cursor-pointer border border-slate-600 active:scale-[0.95] transition"
-            >
-              <MoreHorizontal size={16} />
+          <div className="flex items-center justify-end gap-2 transition-opacity">
+            <button className="p-1.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-md transition-colors cursor-pointer">
+              <Copy className="w-4 h-4" />
             </button>
-
-            {/* Popup Menu */}
-            {isMenuOpen && (
-              <div className="absolute right-0 mt-2 w-40 bg-slate-800 border border-slate-600 rounded-lg shadow-lg z-50">
-                <button
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    // Add edit functionality here
-                  }}
-                  className="w-full px-4 py-2 flex items-center gap-2 hover:bg-slate-700 rounded-t-lg transition text-sm text-slate-200"
-                >
-                  <Edit size={16} /> Edit
-                </button>
-                <button
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    // Add delete functionality here
-                  }}
-                  className="w-full px-4 py-2 flex items-center gap-2 hover:bg-slate-700 rounded-b-lg transition text-sm text-red-400"
-                >
-                  <Trash2 size={16} /> Delete
-                </button>
-              </div>
-            )}
+            <button className="p-1.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-md transition-colors cursor-pointer">
+              <Edit2 className="w-4 h-4" />
+            </button>
+            <button className="p-1.5 text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 rounded-md transition-colors cursor-pointer">
+              <Trash2 className="w-4 h-4" />
+            </button>
           </div>
         </div>
       </div>
