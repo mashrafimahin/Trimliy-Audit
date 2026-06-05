@@ -30,3 +30,27 @@ export const UrlCreation = async (urlData) => {
     return err?.message;
   }
 };
+
+// delete url
+export const UrlDeletion = async (urlId) => {
+  try {
+    // request server
+    const response = await fetch(import.meta.env.VITE_ACCOUNT_URL_LINKS, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ linkId: urlId }),
+      credentials: "include",
+    });
+    // actions
+    const data = await response.json();
+    // redirect
+    setTimeout(() => {
+      window.location.href = data.redirectTo;
+    }, 1000);
+  } catch (err) {
+    console.log(err);
+    return err?.message;
+  }
+};

@@ -1,6 +1,6 @@
 // dependencies
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { UrlCreation } from "../../handler/UrlHandler";
+import { UrlCreation, UrlDeletion } from "../../handler/UrlHandler";
 
 // initial state
 const info = {
@@ -8,6 +8,7 @@ const info = {
   error: false,
   message: "",
   showState: false,
+  targetedLink: {},
 };
 
 // thunk function - create url
@@ -15,18 +16,27 @@ export const CreateURL = createAsyncThunk(
   "user/urlCreation",
   async (formInfo) => {
     const state = await UrlCreation(formInfo);
-    console.log(state);
     return state;
   },
 );
+
+// thunk function - delete url
+export const DeleteURL = createAsyncThunk("user/urlDeletion", async (urlId) => {
+  await UrlDeletion(urlId);
+});
 
 // slice
 const UrlControllerSlice = createSlice({
   name: "UrlControllerSlice",
   initialState: info,
+  reducers: {
+    handleTarget: (state, action) => {
+      state.targetedLink = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
-      // case's for creating url
+      // ── CreateURL ──
       .addCase(CreateURL.pending, (state) => {
         state.isLoading = true;
         state.error = false;
@@ -35,8 +45,6 @@ const UrlControllerSlice = createSlice({
       .addCase(CreateURL.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = false;
-
-        // checking
         if (action.payload.success) {
           state.showState = true;
           state.message = action.payload.message;
@@ -50,9 +58,29 @@ const UrlControllerSlice = createSlice({
         state.isLoading = false;
         state.error = true;
         state.showState = false;
+      })
+
+      // ── DeleteURL ──
+      .addCase(DeleteURL.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+        state.showState = false;
+      })
+      .addCase(DeleteURL.fulfilled, (state) => {
+        state.isLoading = false;
+        state.error = false;
+        state.showState = false;
+        state.targetedLink = {};
+      })
+      .addCase(DeleteURL.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+        state.showState = false;
+        state.message = "Failed to delete the link.";
       });
   },
 });
 
 // exports
 export default UrlControllerSlice.reducer;
+export const { handleTarget } = UrlControllerSlice.actions;
