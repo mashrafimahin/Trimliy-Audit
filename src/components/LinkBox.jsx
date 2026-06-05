@@ -1,14 +1,15 @@
-// dependencies
 // icons
-import { Calendar, Globe2, QrCode, Trash2, Copy, Edit2 } from "lucide-react";
-// components
+import { Calendar, Globe2, QrCode } from "lucide-react";
+// typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
+// components
+import ActionHandler from "./ActionsHandler";
 
 // main
 const LinkBox = ({ item }) => {
   return (
-    <div className="p-5 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between group">
+    <div className="p-5 flex flex-col md:flex-row gap-6 items-start md:items-center justify-between group border-gray-600/20 border-b">
       {/* left side */}
       <div className="flex items-start gap-4 flex-1 min-w-0">
         <div className="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center shrink-0 mt-1">
@@ -56,17 +57,7 @@ const LinkBox = ({ item }) => {
         </div>
         {/* action buttons */}
         <div className="flex gap-2">
-          <div className="flex items-center justify-end gap-2 transition-opacity">
-            <button className="p-1.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-md transition-colors cursor-pointer">
-              <Copy className="w-4 h-4" />
-            </button>
-            <button className="p-1.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-md transition-colors cursor-pointer">
-              <Edit2 className="w-4 h-4" />
-            </button>
-            <button className="p-1.5 text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 rounded-md transition-colors cursor-pointer">
-              <Trash2 className="w-4 h-4" />
-            </button>
-          </div>
+          <ActionHandler info={item} />
         </div>
       </div>
     </div>
