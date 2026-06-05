@@ -1,4 +1,5 @@
 // dependencies
+import { useState } from "react";
 import { useSlices } from "../hooks/useSlices";
 // controller
 import { handlePopupView } from "../app/features/FlowControlSlice";
@@ -9,16 +10,28 @@ import Paragraph from "../typography/Paragraph";
 import { X, Trash2, Link2, AlertTriangle } from "lucide-react";
 // component
 import Button from "../components/Button";
+import { cn } from "../utils/ClassMerger";
+import { DeleteURL } from "../app/features/UrlControllerSlice";
 
 const DeleteLinkLayout = () => {
+  // states
   const { dispatch } = useSlices("flowControl");
-  const { data: urlInfo } = useSlices("urlControl");
+  const { data: urlInfo, dispatch: ControlUrl } = useSlices("urlControl");
+  // fake timer
+  const [timer, setTimer] = useState(false);
 
+  // handle popup menu
   const handlePopup = () => {
     dispatch(handlePopupView());
   };
 
-  const handleDelete = () => {};
+  // handle delete
+  const handleDelete = () => {
+    setTimer(true);
+    setTimeout(() => {
+      ControlUrl(DeleteURL(urlInfo.targetedLink.linkId));
+    }, 1200);
+  };
 
   return (
     <div className="relative z-10">
@@ -37,7 +50,12 @@ const DeleteLinkLayout = () => {
             </Paragraph>
           </div>
         </div>
-        <Button variant={"regular"} className={"p-2"} onClick={handlePopup}>
+        <Button
+          variant={"regular"}
+          onClick={handlePopup}
+          className={cn("p-2", timer && "cursor-no-drop")}
+          disabled={timer}
+        >
           <X className="w-5 h-5" />
         </Button>
       </div>
@@ -80,16 +98,25 @@ const DeleteLinkLayout = () => {
 
       {/* Footer */}
       <div className="p-6 pt-0 flex gap-3">
-        <Button variant={"regular"} className={"flex-1"} onClick={handlePopup}>
+        <Button
+          variant={"regular"}
+          onClick={handlePopup}
+          className={cn("flex-1", timer && "cursor-no-drop")}
+          disabled={timer}
+        >
           Cancel
         </Button>
         <Button
           variant={"danger"}
-          className={"flex-1 gap-2 bg-red-500"}
+          className={cn(
+            "flex-1 gap-2 bg-red-500",
+            timer && "bg-red-500/20 cursor-no-drop",
+          )}
           onClick={handleDelete}
+          disabled={timer}
         >
           <Trash2 className="w-4 h-4" />
-          Delete link
+          {timer ? "Deleting ...." : "Delete link"}
         </Button>
       </div>
     </div>
