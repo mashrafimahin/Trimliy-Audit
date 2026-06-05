@@ -26,7 +26,9 @@ const Overview = () => {
     totalLinks < 10 ? "0" + totalLinks : totalLinks,
     totalClicks > 999
       ? Number([slicedCountDigitOne, slicedCountDigitTwo].join(".")) + "K"
-      : totalClicks,
+      : totalClicks < 10
+        ? "0" + totalClicks
+        : totalClicks,
     `${totalClicks / totalLinks}%`,
     "USA",
   ];
