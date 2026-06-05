@@ -96,10 +96,9 @@ const OverviewSlice = createSlice({
         state.isError = false;
 
         // set custom data
-        state.overview.recentLinks = action.payload.urlData;
         state.links = action.payload.urlData;
         state.profile.info = action.payload.userData;
-        // console.log(action.payload.userData);
+        state.overview.recentLinks = action.payload.urlData.slice(0, 3);
       })
       .addCase(OverviewThunk.rejected, (state) => {
         state.isLoading = false;
