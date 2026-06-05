@@ -39,7 +39,14 @@ const Table = ({ data }) => {
                   <Link2 className="w-4 h-4 text-blue-400" />
                 </div>
                 <span className="font-medium text-white hover:underline cursor-pointer">
-                  {link.shortURL}
+                  <a
+                    //! Need to Change
+                    href={`http://localhost:8380/${link.shortURL}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {link.shortURL}
+                  </a>
                 </span>
               </div>
             </td>
