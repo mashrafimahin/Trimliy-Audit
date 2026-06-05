@@ -29,7 +29,7 @@ const Overview = () => {
       : totalClicks < 10
         ? "0" + totalClicks
         : totalClicks,
-    `${totalClicks / totalLinks}%`,
+    `${(totalClicks / totalLinks).toFixed(2)}%`,
     "USA",
   ];
   // filter data
