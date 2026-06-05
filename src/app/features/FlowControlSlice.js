@@ -6,6 +6,7 @@ const status = {
   activeView: "dashboard",
   mobileToggle: false,
   viewPopup: false,
+  viewPopupType: "",
 };
 
 // slice
@@ -19,8 +20,9 @@ const FlowControlSlice = createSlice({
     handleMobileToggle: (state) => {
       state.mobileToggle = !state.mobileToggle;
     },
-    handlePopupView: (state) => {
+    handlePopupView: (state, action) => {
       state.viewPopup = !state.viewPopup;
+      state.viewPopupType = action.payload;
     },
   },
 });
