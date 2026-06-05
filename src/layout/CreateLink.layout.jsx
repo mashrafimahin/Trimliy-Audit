@@ -1,7 +1,10 @@
 // dependencies
 import { useState } from "react";
 import { useSlices } from "../hooks/useSlices";
+// utility
+import { cn } from "../utils/ClassMerger";
 // controller
+import { CreateURL } from "../app/features/UrlControllerSlice";
 import { handlePopupView } from "../app/features/FlowControlSlice";
 // typography
 import Header from "../typography/Header";
@@ -16,6 +19,7 @@ import Button from "../components/Button";
 const CreateLinkLayout = () => {
   // redux state
   const { dispatch } = useSlices("flowControl");
+  const { data, dispatch: createDispatch } = useSlices("urlControl");
   // state
   const [formInfo, setFormInfo] = useState({
     fullUrl: "",
@@ -39,7 +43,7 @@ const CreateLinkLayout = () => {
   // handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formInfo);
+    createDispatch(CreateURL(formInfo));
   };
 
   return (
@@ -92,7 +96,7 @@ const CreateLinkLayout = () => {
             </label>
             <div className="flex gap-2">
               <div className="flex items-center px-4 bg-navy-800/50 border border-white/10 rounded-xl text-slate-400 text-sm whitespace-nowrap backdrop-blur-sm">
-                trim.ly /
+                fy.app/
               </div>
               <Input
                 type={"text"}
@@ -121,7 +125,19 @@ const CreateLinkLayout = () => {
         </div>
 
         {/* Footer Actions */}
-        <div className="p-6 pt-4 border-t border-white/5 flex items-center justify-end gap-3 bg-navy-900/80 backdrop-blur-md">
+        <div className="p-6 pt-4 border-t border-white/5 flex items-center justify-between gap-3 bg-navy-900/80 backdrop-blur-md">
+          {data.error || data.showState ? (
+            <p
+              className={cn(
+                "text-md font-semibold",
+                data.error ? "text-red-500" : "text-green-500",
+              )}
+            >
+              {data.message}
+            </p>
+          ) : (
+            "-"
+          )}
           <Button type="submit">Create Link</Button>
         </div>
       </form>
