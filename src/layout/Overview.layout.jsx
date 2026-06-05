@@ -46,7 +46,7 @@ const Overview = () => {
 
   // handle popup control
   const handlePopup = () => {
-    dispatch(handlePopupView());
+    dispatch(handlePopupView("linkCreation"));
   };
 
   return (

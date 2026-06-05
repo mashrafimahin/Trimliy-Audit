@@ -17,7 +17,7 @@ const Links = () => {
 
   // handle popup control
   const handlePopup = () => {
-    dispatch(handlePopupView());
+    dispatch(handlePopupView("linkCreation"));
   };
 
   return (
