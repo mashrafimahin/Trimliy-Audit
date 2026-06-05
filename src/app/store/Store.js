@@ -7,6 +7,7 @@ import FlowControlSlice from "../features/FlowControlSlice";
 import OverviewSlice from "../features/OverviewSlice";
 import SignUpSlice from "../features/SignUpSlice";
 import LogInSlice from "../features/LogInSlice";
+import UrlControllerSlice from "../features/UrlControllerSlice";
 
 const Store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const Store = configureStore({
     flowControl: FlowControlSlice,
     signUpControl: SignUpSlice,
     loginControl: LogInSlice,
+    urlControl: UrlControllerSlice,
   },
 });
 
