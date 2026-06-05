@@ -1,9 +1,10 @@
 // dependencies
 // layout
 import CreateLinkLayout from "../layout/CreateLink.layout";
+import DeleteLinkLayout from "../layout/DeleteLink.layout";
 
 // main
-const PopUp = ({ linkCreation }) => {
+const PopUp = ({ type }) => {
   return (
     <div>
       {/* Backdrop */}
@@ -14,7 +15,8 @@ const PopUp = ({ linkCreation }) => {
         <div className="w-full max-w-lg pointer-events-auto">
           {/* content */}
           <div className="p-0 overflow-hidden border border-white/10 shadow-2xl relative rounded-xl">
-            {linkCreation && <CreateLinkLayout />}
+            {type === "linkCreation" && <CreateLinkLayout />}
+            {type === "linkDeletion" && <DeleteLinkLayout />}
           </div>
         </div>
       </div>
