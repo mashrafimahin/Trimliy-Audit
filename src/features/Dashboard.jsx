@@ -58,7 +58,7 @@ const Dashboard = () => {
       {/* sidebar */}
       <Sidebar />
       {/* popup window  */}
-      {data.viewPopup && <PopUp linkCreation={true} />}
+      {data.viewPopup && <PopUp type={data.viewPopupType} />}
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col min-w-0 overflow-y-auto relative">
