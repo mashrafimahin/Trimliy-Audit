@@ -5,6 +5,8 @@ export const UrlCreation = async (urlData) => {
   const newUrlData = {
     ...urlData,
     userId,
+    // Remove empty shortUrl
+    shortUrl: urlData.shortUrl.trim() || undefined,
   };
 
   try {
@@ -19,10 +21,12 @@ export const UrlCreation = async (urlData) => {
     });
     // actions
     const data = await response.json();
-    // redirect
-    setTimeout(() => {
-      window.location.href = data.redirectTo;
-    }, 1000);
+    // redirect - only if redirectTo exists
+    if (data.redirectTo) {
+      setTimeout(() => {
+        window.location.href = data.redirectTo;
+      }, 1000);
+    }
     // response
     return data;
   } catch (err) {
@@ -52,10 +56,12 @@ export const UrlUpdate = async (urlData) => {
     });
     // actions
     const data = await response.json();
-    // redirect
-    setTimeout(() => {
-      window.location.href = data.redirectTo;
-    }, 1000);
+    // redirect - only if redirectTo exists
+    if (data.redirectTo) {
+      setTimeout(() => {
+        window.location.href = data.redirectTo;
+      }, 1000);
+    }
     // response
     return data;
   } catch (err) {
@@ -78,10 +84,12 @@ export const UrlDeletion = async (urlId) => {
     });
     // actions
     const data = await response.json();
-    // redirect
-    setTimeout(() => {
-      window.location.href = data.redirectTo;
-    }, 1000);
+    // redirect - only if redirectTo exists
+    if (data.redirectTo) {
+      setTimeout(() => {
+        window.location.href = data.redirectTo;
+      }, 1000);
+    }
   } catch (err) {
     console.log(err);
     return err?.message;

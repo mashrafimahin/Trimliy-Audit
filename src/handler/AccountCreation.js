@@ -1,5 +1,6 @@
 // main
 export const AccountCreation = async (userData) => {
+  console.log(userData);
   try {
     // request server
     const response = await fetch(import.meta.env.VITE_ACCOUNT_CREATION, {
@@ -23,5 +24,6 @@ export const AccountCreation = async (userData) => {
     }
   } catch (err) {
     console.log(err);
+    return err?.message;
   }
 };
