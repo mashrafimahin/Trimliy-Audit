@@ -29,7 +29,7 @@ const Overview = () => {
       : totalClicks < 10
         ? "0" + totalClicks
         : totalClicks,
-    `${(totalClicks / totalLinks).toFixed(2)}%`,
+    `${isNaN(totalClicks / totalLinks) ? "0.0" : (totalClicks / totalLinks).toFixed(2)}%`,
     "USA",
   ];
   // filter data
