@@ -2,6 +2,7 @@
 // layout
 import CreateLinkLayout from "../layout/CreateLink.layout";
 import DeleteLinkLayout from "../layout/DeleteLink.layout";
+import UpdateLinkLayout from "../layout/UpdateLink.layout";
 
 // main
 const PopUp = ({ type }) => {
@@ -16,6 +17,7 @@ const PopUp = ({ type }) => {
           {/* content */}
           <div className="p-0 overflow-hidden border border-white/10 shadow-2xl relative rounded-xl">
             {type === "linkCreation" && <CreateLinkLayout />}
+            {type === "linkUpdate" && <UpdateLinkLayout />}
             {type === "linkDeletion" && <DeleteLinkLayout />}
           </div>
         </div>
