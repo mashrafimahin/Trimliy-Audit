@@ -1,6 +1,6 @@
 // dependencies
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { UrlCreation, UrlDeletion } from "../../handler/UrlHandler";
+import { UrlCreation, UrlDeletion, UrlUpdate } from "../../handler/UrlHandler";
 
 // initial state
 const info = {
@@ -16,6 +16,15 @@ export const CreateURL = createAsyncThunk(
   "user/urlCreation",
   async (formInfo) => {
     const state = await UrlCreation(formInfo);
+    return state;
+  },
+);
+
+// thunk function - update url
+export const UpdateURL = createAsyncThunk(
+  "user/urlUpdate",
+  async (formInfo) => {
+    const state = await UrlUpdate(formInfo);
     return state;
   },
 );
@@ -55,6 +64,30 @@ const UrlControllerSlice = createSlice({
         }
       })
       .addCase(CreateURL.rejected, (state) => {
+        state.isLoading = false;
+        state.error = true;
+        state.showState = false;
+      })
+
+      // ── UpdateURL ──
+      .addCase(UpdateURL.pending, (state) => {
+        state.isLoading = true;
+        state.error = false;
+        state.showState = false;
+      })
+      .addCase(UpdateURL.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = false;
+        if (action.payload.success) {
+          state.showState = true;
+          state.message = action.payload.message;
+        } else {
+          state.showState = false;
+          state.error = true;
+          state.message = action.payload.error.split(":")[2];
+        }
+      })
+      .addCase(UpdateURL.rejected, (state) => {
         state.isLoading = false;
         state.error = true;
         state.showState = false;
