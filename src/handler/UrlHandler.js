@@ -31,6 +31,39 @@ export const UrlCreation = async (urlData) => {
   }
 };
 
+// update url
+export const UrlUpdate = async (urlData) => {
+  // make new reference of urlData
+  const userId = localStorage.getItem("user_id");
+  const newUrlData = {
+    ...urlData,
+    userId,
+  };
+
+  try {
+    // request server
+    const response = await fetch(import.meta.env.VITE_ACCOUNT_URL_UPDATE, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUrlData),
+      credentials: "include",
+    });
+    // actions
+    const data = await response.json();
+    // redirect
+    setTimeout(() => {
+      window.location.href = data.redirectTo;
+    }, 1000);
+    // response
+    return data;
+  } catch (err) {
+    console.log(err);
+    return err?.message;
+  }
+};
+
 // delete url
 export const UrlDeletion = async (urlId) => {
   try {
