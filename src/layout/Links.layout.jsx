@@ -37,9 +37,13 @@ const Links = () => {
 
       {/* link lists */}
       <div className="space-y-4">
-        {data.links.map((item, i) => (
-          <LinkBox key={i} item={item} />
-        ))}
+        {data.links.length === 0 ? (
+          <div className="text-center mt-10 text-gray-400">
+            No history found. Create your first link now!
+          </div>
+        ) : (
+          data.links.map((item, i) => <LinkBox key={i} item={item} />)
+        )}
       </div>
     </div>
   );
