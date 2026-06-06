@@ -5,6 +5,7 @@ import { handleMobileToggle } from "../app/features/FlowControlSlice";
 import { OverviewThunk } from "../app/features/OverviewSlice";
 // icons
 import { Search, Bell, Menu } from "lucide-react";
+import ProfilePlaceholder from "../assets/icons/userPlaceholder.webp";
 // components
 import Loader from "../components/Loader";
 import Input from "../components/Input";
@@ -97,16 +98,17 @@ const Dashboard = () => {
             <div className="h-8 w-px bg-white/10 mx-2"></div>
             <button className="flex items-center gap-2 hover:bg-white/5 py-1 px-2 rounded-lg transition-colors">
               <img
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                src={fetchData.profile.info[0].img || ProfilePlaceholder}
                 alt="User"
                 className="w-8 h-8 rounded-full ring-2 ring-white/10"
                 draggable={false}
+                onContextMenu={(e) => e.preventDefault()}
               />
               <div className="hidden sm:block text-left">
                 <p className="text-sm font-medium text-white leading-none">
-                  Alex M.
+                  {fetchData.profile.info[0].firstName}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">Pro Plan</p>
+                <p className="text-xs text-slate-400 mt-1">Free Plan</p>
               </div>
             </button>
           </div>
