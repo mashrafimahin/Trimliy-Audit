@@ -71,14 +71,8 @@ const Table = ({ data }) => {
                 {link.createdDate}
               </td>
               <td className="px-6 py-4">
-                <div
-                  className={
-                    link.status === "active"
-                      ? "bg-green-500/70 text-sm p-0.5 px-2 text-white rounded-full text-center"
-                      : "bg-red-500/70 text-sm p-0.5 px-2 text-white rounded-full text-center"
-                  }
-                >
-                  {link.status === "active" ? "Active" : "Inactive"}
+                <div className="bg-green-500/70 text-sm p-0.5 px-2 text-white rounded-full text-center">
+                  Active
                 </div>
               </td>
               <td className="px-6 py-4 text-right">
