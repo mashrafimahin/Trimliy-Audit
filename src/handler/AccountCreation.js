@@ -1,6 +1,5 @@
 // main
 export const AccountCreation = async (userData) => {
-  console.log(userData);
   try {
     // request server
     const response = await fetch(import.meta.env.VITE_ACCOUNT_CREATION, {
@@ -13,6 +12,7 @@ export const AccountCreation = async (userData) => {
     });
     // actions
     const data = await response.json();
+    console.log(data);
     // response
     if (data.success) {
       // save reference to local storage

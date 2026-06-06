@@ -60,7 +60,7 @@ const UrlControllerSlice = createSlice({
         } else {
           state.showState = false;
           state.error = true;
-          state.message = action.payload.error.split(":")[2];
+          state.message = action.payload.error;
         }
       })
       .addCase(CreateURL.rejected, (state) => {
@@ -84,7 +84,7 @@ const UrlControllerSlice = createSlice({
         } else {
           state.showState = false;
           state.error = true;
-          state.message = action.payload.error.split(":")[2];
+          state.message = action.payload.error;
         }
       })
       .addCase(UpdateURL.rejected, (state) => {
