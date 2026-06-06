@@ -24,11 +24,16 @@ const ActionHandler = ({ info }) => {
     }, 1200);
   };
 
+  // handle update
+  const handleUpdate = async () => {
+    await SetUrlInfo(handleTarget(info));
+    await ControlPopup(handlePopupView("linkUpdate"));
+  };
+
   // handle delete
   const handleDelete = async () => {
     await SetUrlInfo(handleTarget(info));
     await ControlPopup(handlePopupView("linkDeletion"));
-    console.log("okay");
   };
 
   return (
@@ -46,7 +51,10 @@ const ActionHandler = ({ info }) => {
           <Copy className="w-4 h-4" />
         )}
       </button>
-      <button className="p-1.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-md transition-colors cursor-pointer">
+      <button
+        onClick={handleUpdate}
+        className="p-1.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-md transition-colors cursor-pointer"
+      >
         <Edit2 className="w-4 h-4" />
       </button>
       <button
