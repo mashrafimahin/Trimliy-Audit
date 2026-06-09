@@ -2,7 +2,8 @@
 import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { useSlices } from "../hooks/useSlices";
-import { LoginThunk } from "../app/features/LogInSlice";
+import { handleForgotPassword, LoginThunk } from "../app/features/LogInSlice";
+
 // icons
 import { Eye, EyeOff, GitCompareArrows, Link2, Mail } from "lucide-react";
 // typography
@@ -11,7 +12,9 @@ import Paragraph from "../typography/Paragraph";
 // components
 import Input from "../components/Input";
 import Button from "../components/Button";
-// layouts
+// layout
+import PasswordOutlet from "../components/PasswordOutlet";
+
 // main
 function Login() {
   // states
@@ -37,6 +40,11 @@ function Login() {
     setVisible((prevState) => !prevState);
   };
 
+  // handle forget password
+  const handleForgetPassword = () => {
+    dispatch(handleForgotPassword());
+  };
+
   // handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +53,6 @@ function Login() {
       alert("You must need to fill the input boxes.");
       return;
     }
-
     // login
     dispatch(LoginThunk(formInfo));
   };
@@ -54,6 +61,11 @@ function Login() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // popup - reset password
+  if (data.forgotPassword) {
+    return <PasswordOutlet />;
+  }
 
   return (
     <div className="min-h-screen flex bg-navy-900">
@@ -129,12 +141,12 @@ function Login() {
                   <label className="text-md font-medium text-slate-300">
                     Password
                   </label>
-                  <a
-                    href="#"
-                    className="text-sm text-blue-400 hover:text-blue-300"
+                  <span
+                    onClick={handleForgetPassword}
+                    className="text-sm text-blue-400 hover:text-blue-300 cursor-pointer"
                   >
                     Forgot password?
-                  </a>
+                  </span>
                 </div>
                 <div className="flex items-center justify-between rounded-md border border-gray-100/30 px-4 mt-2">
                   <Input
