@@ -9,7 +9,7 @@ import { Mail, ArrowRight } from "lucide-react";
 // component
 import Button from "../components/Button";
 
-const ForgotEmailStage = ({ onCancel, onNext }) => {
+const ForgotEmailStage = ({ onCancel, onNext, errorMsg }) => {
   // state
   const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
@@ -30,7 +30,6 @@ const ForgotEmailStage = ({ onCancel, onNext }) => {
     }
     setLoading(true);
     setTimeout(() => {
-      setLoading(false);
       if (onNext) onNext(email);
     }, 1200);
   };
@@ -93,6 +92,11 @@ const ForgotEmailStage = ({ onCancel, onNext }) => {
             verification code to reset your password.
           </p>
         </div>
+
+        {/* error alert */}
+        {errorMsg && (
+          <p className="text-center text-red-500 font-semibold">{errorMsg}</p>
+        )}
       </div>
 
       {/* Footer */}
