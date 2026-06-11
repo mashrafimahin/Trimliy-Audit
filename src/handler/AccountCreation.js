@@ -12,7 +12,6 @@ export const AccountCreation = async (userData) => {
     });
     // actions
     const data = await response.json();
-    console.log(data);
     // response
     if (data.success) {
       // save reference to local storage
