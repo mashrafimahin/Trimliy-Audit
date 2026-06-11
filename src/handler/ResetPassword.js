@@ -44,7 +44,6 @@ export const sendRecoveryOTP = async (otp) => {
 };
 
 // set new password
-// send otp
 export const setNewPassword = async (pass) => {
   // email
   const userEmail = localStorage.getItem("userEmail");
@@ -60,7 +59,6 @@ export const setNewPassword = async (pass) => {
     });
     // data
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (err) {
     console.log(err?.message);
