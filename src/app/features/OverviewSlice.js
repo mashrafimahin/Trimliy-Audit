@@ -54,10 +54,10 @@ const status = {
   links: [],
   profile: {
     info: {
-      firstName: "Mashrafi",
-      lastName: "Mahin",
-      userName: "@mashrafi120",
-      email: "mahin123@gmail.com",
+      firstName: "",
+      lastName: "",
+      userName: "",
+      email: "",
       company: "",
     },
     settings: {
