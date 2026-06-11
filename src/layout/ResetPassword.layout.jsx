@@ -43,7 +43,7 @@ const NewPasswordStage = ({ onDone }) => {
     setLoading(true);
     setTimeout(() => {
       setDone(true);
-      if (onDone) setTimeout(onDone, 100);
+      if (onDone) setTimeout(onDone(password), 100);
     }, 1400);
   };
 
