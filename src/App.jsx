@@ -14,6 +14,7 @@ const SignUp = lazy(() => import("./pages/SignUp"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Privacy = lazy(() => import("./pages/Privacy"));
+const Documentation = lazy(() => import("./pages/Documentation"));
 const Dashboard = lazy(() => import("./features/Dashboard"));
 
 // main
@@ -47,6 +48,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
+          <Route path="/documentation" element={<Documentation />} />
           <Route element={<RouteHandler />}>
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
