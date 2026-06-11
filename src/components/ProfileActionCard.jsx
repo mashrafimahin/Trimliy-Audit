@@ -1,8 +1,9 @@
 // dependencies
 import { useValidation } from "../hooks/useValidation";
+import { cn } from "../utils/ClassMerger";
 // states
 import { useSlices } from "../hooks/useSlices";
-import { handleEditButton } from "../app/features/OverviewSlice";
+import { handleEditButton, updateUser } from "../app/features/OverviewSlice";
 // typography
 import Header from "../typography/Header";
 import Paragraph from "../typography/Paragraph";
@@ -45,15 +46,13 @@ const ProfileActionCard = () => {
   const saveChanges = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const result = useValidation(profileInfo);
-    console.log(result);
     if (!result.isFormValid) {
       setErrors(result.errors);
       return;
     }
     setErrors({});
     // handle edit
-    dispatch(handleEditButton());
-    //! update info
+    dispatch(updateUser(profileInfo));
   };
 
   return (
@@ -141,24 +140,9 @@ const ProfileActionCard = () => {
           <label className="text-sm font-medium text-slate-300">
             Email Address
           </label>
-          {data.profile.settings.editing ? (
-            <>
-              <Input
-                type={"email"}
-                name={"email"}
-                value={profileInfo.email}
-                setValue={updateState}
-                placeholder={profileInfo.email}
-              />
-              {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-              )}
-            </>
-          ) : (
-            <Paragraph variant={"small"} className={commonStyle}>
-              {profileInfo.email}
-            </Paragraph>
-          )}
+          <Paragraph variant={"small"} className={commonStyle}>
+            {profileInfo.email}
+          </Paragraph>
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium text-slate-300">
@@ -170,15 +154,31 @@ const ProfileActionCard = () => {
         </div>
 
         <div className="pt-4 flex justify-end">
+          {data.profile.settings.updated && (
+            <p className="text-green-500 text-md font-semibold mt-1 mr-4">
+              {data.profile.settings.updateMessage}
+            </p>
+          )}
           {data.profile.settings.editing ? (
             <div className="flex gap-4">
-              <Button className={"bg-red-700"} onClick={handleClick}>
+              <Button
+                className={cn(
+                  "bg-red-700",
+                  data.updatingUser ? "cursor-no-drop" : "",
+                )}
+                onClick={handleClick}
+                disabled={data.updatingUser}
+              >
                 Cancel
               </Button>
               <Button onClick={saveChanges}>Save Changes</Button>
             </div>
           ) : (
-            <Button onClick={handleClick}>
+            <Button
+              onClick={handleClick}
+              disabled={data.updatingUser}
+              className={cn(data.updatingUser ? "cursor-no-drop" : "")}
+            >
               <PenBoxIcon size={15} className="mr-2" />
               Edit
             </Button>
