@@ -8,6 +8,7 @@ import Paragraph from "../typography/Paragraph";
 // components
 import NotFoundPlaceholder from "../components/NotFoundPlaceholder";
 import ProfileActionCard from "../components/ProfileActionCard";
+import ProfileSecurityAction from "../components/ProfileSecurityAction";
 // icons
 import { User, Lock, Bell, Palette } from "lucide-react";
 // data
@@ -20,7 +21,7 @@ const tabs = [
 // paths
 const COMPONENT_PATH = {
   profile: ProfileActionCard,
-  security: null,
+  security: ProfileSecurityAction,
   appearance: null,
   notifications: null,
 };
