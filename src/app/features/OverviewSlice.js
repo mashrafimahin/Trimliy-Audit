@@ -1,6 +1,7 @@
 // dependencies
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { OverviewFetch } from "../../handler/OverviewFetch";
+import { updateExistingUser } from "../../handler/UpdateAccount";
 
 // initial state
 const status = {
@@ -53,7 +54,6 @@ const status = {
   links: [],
   profile: {
     info: {
-      img: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
       firstName: "Mashrafi",
       lastName: "Mahin",
       userName: "@mashrafi120",
@@ -62,6 +62,8 @@ const status = {
     },
     settings: {
       editing: false,
+      updated: false,
+      updateMessage: "",
     },
   },
 };
@@ -72,6 +74,15 @@ export const OverviewThunk = createAsyncThunk("user/fetch", async () => {
   return fetchData;
 });
 
+// thunk function - update user
+export const updateUser = createAsyncThunk(
+  "user/updateUser",
+  async (userData) => {
+    const fetchData = await updateExistingUser(userData);
+    return fetchData;
+  },
+);
+
 // slice
 const OverviewSlice = createSlice({
   name: "OverviewSlice",
@@ -80,13 +91,10 @@ const OverviewSlice = createSlice({
     handleEditButton: (state) => {
       state.profile.settings.editing = !state.profile.settings.editing;
     },
-    updateInfo: (state, action) => {
-      state.profile.info = { ...state.profile.info, ...action.payload };
-      console.log(state.profile.info);
-    },
   },
   extraReducers: (builder) => {
     builder
+      // fetch
       .addCase(OverviewThunk.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
@@ -103,10 +111,22 @@ const OverviewSlice = createSlice({
       .addCase(OverviewThunk.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
+      })
+
+      // update
+      .addCase(updateUser.pending, () => {})
+      .addCase(updateUser.fulfilled, (state, action) => {
+        state.profile.settings.updated = true;
+        state.profile.settings.updateMessage = action.payload.message;
+        state.profile.settings.editing = false;
+      })
+      .addCase(updateUser.rejected, (state, action) => {
+        state.profile.settings.editing = true;
+        state.profile.settings.updateMessage = action.payload.message;
       });
   },
 });
 
 // exports
 export default OverviewSlice.reducer;
-export const { handleEditButton, updateInfo } = OverviewSlice.actions;
+export const { handleEditButton, closeUpdate } = OverviewSlice.actions;
