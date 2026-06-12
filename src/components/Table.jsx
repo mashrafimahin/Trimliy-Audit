@@ -48,14 +48,8 @@ const Table = ({ data }) => {
                   <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
                     <Link2 className="w-4 h-4 text-blue-400" />
                   </div>
-                  <span className="font-medium text-white hover:underline cursor-pointer">
-                    <a
-                      href={`${import.meta.env.VITE_BASE_URL}/${link.shortURL}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {link.shortURL}
-                    </a>
+                  <span className="font-medium text-white cursor-pointer">
+                    {link.shortURL}
                   </span>
                 </div>
               </td>
