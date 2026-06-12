@@ -3,14 +3,17 @@ const AuthCheck = async () => {
 
   if (userId) {
     try {
-      const response = await fetch(import.meta.env.VITE_ACCOUNT_CHECK, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        `${import.meta.env.VITE_API_LINK}/checkToken`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ userId }),
+          credentials: "include",
         },
-        body: JSON.stringify({ userId }),
-        credentials: "include",
-      });
+      );
 
       const data = await response.json();
 

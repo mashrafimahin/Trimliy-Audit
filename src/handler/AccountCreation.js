@@ -2,14 +2,17 @@
 export const AccountCreation = async (userData) => {
   try {
     // request server
-    const response = await fetch(import.meta.env.VITE_ACCOUNT_CREATION, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_LINK}/authentication/createAccount`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        credentials: "include",
       },
-      body: JSON.stringify(userData),
-      credentials: "include",
-    });
+    );
     // actions
     const data = await response.json();
     // response

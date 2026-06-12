@@ -2,7 +2,7 @@
 export const updateExistingUser = async (userData) => {
   try {
     const response = await fetch(
-      "http://localhost:8380/authentication/updateAccount",
+      `${import.meta.env.VITE_API_LINK}/authentication/updateAccount`,
       {
         method: "POST",
         headers: {

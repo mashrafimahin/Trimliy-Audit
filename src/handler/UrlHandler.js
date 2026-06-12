@@ -11,14 +11,17 @@ export const UrlCreation = async (urlData) => {
 
   try {
     // request server
-    const response = await fetch(import.meta.env.VITE_ACCOUNT_URL_CREATION, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_LINK}/links/createUrl`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUrlData),
+        credentials: "include",
       },
-      body: JSON.stringify(newUrlData),
-      credentials: "include",
-    });
+    );
     // actions
     const data = await response.json();
     // redirect - only if redirectTo exists
@@ -46,14 +49,17 @@ export const UrlUpdate = async (urlData) => {
 
   try {
     // request server
-    const response = await fetch(import.meta.env.VITE_ACCOUNT_URL_UPDATE, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_LINK}/links/updateUrl`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUrlData),
+        credentials: "include",
       },
-      body: JSON.stringify(newUrlData),
-      credentials: "include",
-    });
+    );
     // actions
     const data = await response.json();
     // redirect - only if redirectTo exists
@@ -74,7 +80,7 @@ export const UrlUpdate = async (urlData) => {
 export const UrlDeletion = async (urlId) => {
   try {
     // request server
-    const response = await fetch(import.meta.env.VITE_ACCOUNT_URL_LINKS, {
+    const response = await fetch(`${import.meta.env.VITE_API_LINK}/links`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

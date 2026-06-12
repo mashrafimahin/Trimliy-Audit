@@ -1,14 +1,17 @@
 // send email
 export const sendRecoveryEmail = async (userEmail) => {
   try {
-    const response = await fetch("http://localhost:8380/forgotPassword", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_LINK}/forgotPassword`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userEmail: userEmail }),
+        credentials: "include",
       },
-      body: JSON.stringify({ userEmail: userEmail }),
-      credentials: "include",
-    });
+    );
     // set data to local
     localStorage.setItem("userEmail", userEmail);
     // data
@@ -26,7 +29,7 @@ export const sendRecoveryOTP = async (otp) => {
   const userEmail = localStorage.getItem("userEmail");
 
   try {
-    const response = await fetch("http://localhost:8380/checkOTP", {
+    const response = await fetch(`${import.meta.env.VITE_API_LINK}/checkOTP`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -49,14 +52,17 @@ export const setNewPassword = async (pass) => {
   const userEmail = localStorage.getItem("userEmail");
 
   try {
-    const response = await fetch("http://localhost:8380/newPassword", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_LINK}/newPassword`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ userEmail, newPassword: pass }),
+        credentials: "include",
       },
-      body: JSON.stringify({ userEmail, newPassword: pass }),
-      credentials: "include",
-    });
+    );
     // data
     const data = await response.json();
     return data;

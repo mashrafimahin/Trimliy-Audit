@@ -8,14 +8,17 @@ export const AccountLogOut = async () => {
 
   try {
     // request server
-    const response = await fetch(import.meta.env.VITE_ACCOUNT_LOGOUT, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const response = await fetch(
+      `${import.meta.env.VITE_API_LINK}/authentication/logout`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(ref),
+        credentials: "include",
       },
-      body: JSON.stringify(ref),
-      credentials: "include",
-    });
+    );
     // actions
     const data = await response.json();
     // response

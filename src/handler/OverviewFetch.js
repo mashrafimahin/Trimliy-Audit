@@ -5,7 +5,7 @@ export const OverviewFetch = async () => {
 
   try {
     // request server
-    const response = await fetch(import.meta.env.VITE_ACCOUNT_FETCH_ALL, {
+    const response = await fetch(`${import.meta.env.VITE_API_LINK}/all`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
