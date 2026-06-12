@@ -41,7 +41,7 @@ const ActionHandler = ({ info }) => {
       <button
         onClick={() =>
           //! Need to Change Backend URL
-          handleCopy(`http://localhost:8380/${info.shortURL}`)
+          handleCopy(`${import.meta.env.VITE_API_LINK}/${info.shortURL}`)
         }
         className="p-1.5 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 rounded-md transition-colors cursor-pointer"
       >
