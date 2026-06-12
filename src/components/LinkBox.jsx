@@ -25,7 +25,7 @@ const LinkBox = ({ item }) => {
             >
               <a
                 //! Need to Change Link
-                href={`http://localhost:8380/${item.shortURL}`}
+                href={`${import.meta.env.VITE_API_LINK}/${item.shortURL}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
