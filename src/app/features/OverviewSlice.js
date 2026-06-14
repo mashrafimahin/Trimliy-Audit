@@ -45,11 +45,7 @@ const status = {
         bg: "bg-emerald-500/10",
       },
     ],
-    devices: [
-      { name: "Mobile", percent: 65, color: "bg-blue-500" },
-      { name: "Desktop", percent: 28, color: "bg-purple-500" },
-      { name: "Tablet", percent: 7, color: "bg-cyan-500" },
-    ],
+    devices: [],
   },
   links: [],
   profile: {
@@ -107,6 +103,7 @@ const OverviewSlice = createSlice({
         state.links = action.payload.urlData;
         state.profile.info = action.payload.userData;
         state.overview.recentLinks = action.payload.urlData.slice(0, 3);
+        state.overview.devices = action.payload.devices;
       })
       .addCase(OverviewThunk.rejected, (state) => {
         state.isLoading = false;
