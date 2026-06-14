@@ -21,10 +21,14 @@ const Overview = () => {
   const totalClicks = data.links.reduce((acc, curr) => acc + curr.clicks, 0);
   const slicedCountDigitOne = String(totalClicks).slice(0, 1);
   const slicedCountDigitTwo = String(totalClicks).slice(1, 3);
-  // const topCountry = data.links[0].countries.reduce(
-  // (acc, curr) => (curr.count > acc.count ? curr : acc),
-  // { count: -Infinity },
-  // ).country_code;
+  const topCountry = data.links
+    .map((item) => item.countries)
+    .flat()
+    .reduce((acc, curr) => (curr.count > acc.count ? curr : acc), {
+      code: "",
+      count: 0,
+    });
+
   // data array
   const expectedValues = [
     totalLinks < 10 ? "0" + totalLinks : totalLinks,
@@ -34,7 +38,7 @@ const Overview = () => {
         ? "0" + totalClicks
         : totalClicks,
     `${isNaN(totalClicks / totalLinks) ? "0.0" : (totalClicks / totalLinks).toFixed(2)}%`,
-    "--",
+    topCountry.country_code === "UNKNOWN" ? "--" : topCountry.country_code,
   ];
   // filter data
   const filteredStatsData = data.overview.stats.map((item, i) => ({
