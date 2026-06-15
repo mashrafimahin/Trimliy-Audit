@@ -36,11 +36,11 @@ const LinkBox = ({ item }) => {
             </Header>
 
             {/* clicks count - inline with link */}
-            <div className="text-center flex-shrink-0 whitespace-nowrap">
-              <div className="text-sm sm:text-lg font-bold text-white">
+            <div className="text-center max-[360px]:hidden shrink-0 whitespace-nowrap">
+              <div className="text-lg sm:text-2xl font-bold text-white">
                 {item.clicks < 10 ? "0" + item.clicks : item.clicks || 0}
               </div>
-              <div className="text-xs text-slate-500">Total Clicks</div>
+              <div className="text-sm text-slate-500">Total Clicks</div>
             </div>
           </div>
 
