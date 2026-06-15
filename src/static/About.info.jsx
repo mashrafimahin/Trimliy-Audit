@@ -1,3 +1,5 @@
+// images
+import FounderPicture from "../assets/images/founder.png";
 // icons
 import {
   Activity,
@@ -19,7 +21,7 @@ export const info = {
     tag: "our Story",
     title: ["Building Smarter Links for", "the Modern Web"],
     description:
-      "Trimly is a modern URL shortening and analytics platform designed to help creators, developers, businesses, and teams create smart links, track engagement, and manage digital sharing more efficiently.",
+      "Trimliy is a modern URL shortening and analytics platform designed to help creators, developers, businesses, and teams create smart links, track engagement, and manage digital sharing more efficiently.",
     buttonOne: "Get Started",
     buttonOneLink: "signup",
     buttonTwo: "Explore Now",
@@ -31,7 +33,7 @@ export const info = {
   company: {
     image:
       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=2072",
-    imageTag: "Trimly Workspace",
+    imageTag: "Trimliy Workspace",
     title: "Who We Are",
     description:
       "Trimly is more than just a URL shortener. It is a complete smart-link management platform built to help users simplify sharing, monitor traffic performance, and improve digital engagement through modern analytics and intelligent tools.",
@@ -53,10 +55,10 @@ export const info = {
   mission: {
     title: "Our Mission",
     description:
-      "Trimly aims to make link sharing smarter, cleaner, faster, and more insightful for modern internet users. We're building powerful tools with clean UX to simplify digital communication and make analytics accessible to everyone.",
+      "Trimliy aims to make link sharing smarter, cleaner, faster, and more insightful for modern internet users. We're building powerful tools with clean UX to simplify digital communication and make analytics accessible to everyone.",
   },
   choose: {
-    title: "Why Choose Trimly",
+    title: "Why Choose Trimliy",
     description:
       "Everything you need to manage your digital footprint with confidence.",
     cards: [
@@ -93,43 +95,21 @@ export const info = {
     ],
   },
   stats: [
-    { label: "Links Generated", value: "100k+" },
-    { label: "Clicks Tracked", value: "750k+" },
-    { label: "Active Users", value: "10K+" },
+    { label: "Links Generated", value: "4k+" },
+    { label: "Clicks Tracked", value: "15k+" },
+    { label: "Active Users", value: "2K+" },
     { label: "Uptime", value: "99.9%" },
   ],
   members: [
     {
-      name: "Sarah Jenkins",
+      name: "Mashrafi Mahin",
       role: "CEO & Founder",
-      bio: "Former product lead at major tech firms. Passionate about building tools that simplify complex workflows.",
-      img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=400",
+      bio: "Full-stack Software Engineer with expertise on MERN and relevant technologies.",
+      img: FounderPicture,
       socialLinks: {
-        fb: "#",
-        in: "#",
-        github: "#",
-      },
-    },
-    {
-      name: "David Chen",
-      role: "Head of Engineering",
-      bio: "Distributed systems expert. Obsessed with making Trimly the fastest link shortener on the planet.",
-      img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400",
-      socialLinks: {
-        fb: "#",
-        in: "#",
-        github: "#",
-      },
-    },
-    {
-      name: "Elena Rodriguez",
-      role: "Lead Designer",
-      bio: "Award-winning UI/UX designer focused on creating intuitive, satisfying digital experiences.",
-      img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400",
-      socialLinks: {
-        fb: "#",
-        in: "#",
-        github: "#",
+        fb: "https://facebook.com/mash.en6",
+        in: "https://linkedin.com/in/mashrafidevs",
+        github: "https://github.com/mashrafimahin",
       },
     },
   ],

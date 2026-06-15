@@ -84,7 +84,7 @@ function PrivacyLayout() {
               <Header variant={"h3"}>Introduction</Header>
               <div className="text-slate-300 text-lg leading-relaxed space-y-4">
                 <Paragraph variant={"small"}>
-                  Trimly respects your privacy and is committed to protecting
+                  Trimliy respects your privacy and is committed to protecting
                   the personal information you share with us. We believe in{" "}
                   <strong className="text-white">transparency</strong>,
                   responsible data usage, and maintaining a{" "}
@@ -215,7 +215,7 @@ function PrivacyLayout() {
               <div className="p-8 h-full bg-navy-900/30">
                 <Header variant={"h3"}>Children's Privacy</Header>
                 <Paragraph variant={"small"} className={"text-md"}>
-                  Trimly is not intended for use by children under the age of
+                  Trimliy is not intended for use by children under the age of
                   16. We do not knowingly collect personal data from minors. If
                   we become aware that a child has provided us with personal
                   information, we take steps to delete it.
@@ -265,7 +265,7 @@ function PrivacyLayout() {
 
       {/* CTA Section */}
       <CTA
-        title={"Your Trust Powers Trimly"}
+        title={"Your Trust Powers Trimliy"}
         description={
           "Continue using our platform confidently, knowing your data is handled responsibly and securely."
         }

@@ -50,7 +50,7 @@ function AboutLayout() {
                 {data.company.description}
               </Paragraph>
 
-              <div className="grid sm:grid-cols-2 gap-y-4 gap-x-8">
+              <div className="grid min-[484px]:grid-cols-2 gap-y-4 gap-x-8">
                 {data.company.cards.map((feature, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center shrink-0">
@@ -93,7 +93,7 @@ function AboutLayout() {
             <Paragraph variant={"small"}>{data.choose.description}</Paragraph>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid min-[570px]:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.choose.cards.map((feature, i) => (
               <FeaturesCard key={i} data={feature} theme={"text-blue-400"} />
             ))}
@@ -104,13 +104,13 @@ function AboutLayout() {
       {/* Stats Section */}
       <section className="py-24 border-y border-white/5 relative overflow-hidden">
         <div className="container mx-auto px-6 relative z-10 max-w-6xl">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 min-[375px]:grid-cols-2 md:grid-cols-4 gap-8">
             {data.stats.map((stat, i) => (
               <div
                 key={i}
                 className="text-center glass-card p-8 group hover:bg-white/5 transition-colors"
               >
-                <h3 className="text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-400 mb-2 tracking-tight group-hover:scale-110 transition-transform duration-300">
+                <h3 className="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-400 mb-2 tracking-tight group-hover:scale-110 transition-transform duration-300">
                   {stat.value}
                 </h3>
                 <p className="text-slate-300 font-medium">{stat.label}</p>

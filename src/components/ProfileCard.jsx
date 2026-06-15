@@ -29,18 +29,21 @@ function ProfileCard({ data }) {
         <div className="flex items-center justify-center gap-4">
           <a
             href={data.socialLinks.fb}
+            target="_blank"
             className="text-slate-500 hover:text-white transition-colors"
           >
             <FontAwesomeIcon icon={faFacebook} />
           </a>
           <a
             href={data.socialLinks.in}
+            target="_blank"
             className="text-slate-500 hover:text-white transition-colors"
           >
             <FontAwesomeIcon icon={faLinkedinIn} />
           </a>
           <a
             href={data.socialLinks.github}
+            target="_blank"
             className="text-slate-500 hover:text-white transition-colors"
           >
             <FontAwesomeIcon icon={faGithub} />

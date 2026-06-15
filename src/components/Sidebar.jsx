@@ -48,7 +48,7 @@ const Sidebar = () => {
               <LinkIcon className="text-white w-4 h-4" />
             </div>
             <span className="text-xl font-bold tracking-tight text-white whitespace-nowrap">
-              Trimly
+              Trimliy
             </span>
           </Link>
         </div>

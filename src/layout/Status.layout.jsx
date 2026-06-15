@@ -5,9 +5,9 @@ function Status() {
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {[
-            { label: "Links Created", value: "100k+" },
-            { label: "Total Clicks", value: "750k+" },
-            { label: "Active Users", value: "10K+" },
+            { label: "Links Generated", value: "4k+" },
+            { label: "Clicks Tracked", value: "15k+" },
+            { label: "Active Users", value: "2K+" },
             { label: "Uptime", value: "99.9%" },
           ].map((stat, i) => (
             <div key={i} className="text-center">

@@ -33,7 +33,7 @@ function CTA({
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative">
             {buttonOne && (
               <Button
-                className="w-full sm:w-auto px-10"
+                className="w-auto px-10"
                 onClick={() => handleClick(buttonOneLink)}
               >
                 {buttonOne}
@@ -41,7 +41,7 @@ function CTA({
             )}
             {buttonTwo && (
               <Button
-                className="w-full sm:w-auto px-10"
+                className="w-auto px-10"
                 onClick={() => handleClick(buttonTwoLink)}
               >
                 {buttonTwo}

@@ -294,6 +294,7 @@ function ContactLayout() {
                 href={social.link}
                 className="w-14 h-14 rounded-full bg-navy-900 border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 hover:border-blue-500/50 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] transition-all duration-300 cursor-pointer"
                 aria-label={social.label}
+                target="_blank"
               >
                 <FontAwesomeIcon icon={social.icon} />
               </a>

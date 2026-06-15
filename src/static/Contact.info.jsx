@@ -1,5 +1,6 @@
 // icons
 import {
+  faDiscord,
   faFacebook,
   faGithub,
   faLinkedinIn,
@@ -15,7 +16,7 @@ import {
 
 // data
 export const info = {
-  title: ["Let's Connect With", " Trimly"],
+  title: ["Let's Connect With", " Trimliy"],
   description:
     "Whether you need technical support, have business inquiries, want to report an issue, or simply want to say hello, our team is always here to help.",
   supportTeams: {
@@ -55,13 +56,13 @@ export const info = {
     ],
   },
   address: {
-    company: "Trimly Inc.",
-    location: ["123 Innovation Drive", "San Francisco, CA 94105"],
+    company: "Trimliy Inc.",
+    location: ["Kushtia, Khulna", "Dhaka ,Bangladesh"],
   },
   FAQ: [
     {
       id: "essential",
-      title: "How quickly does Trimly respond?",
+      title: "How quickly does Trimliy respond?",
       desc: "Our standard response time is under 2 hours during normal business hours. Enterprise customers have access to an exclusive 24/7 priority line with response times under 15 minutes.",
     },
     {
@@ -79,15 +80,27 @@ export const info = {
       title: "Can I contact support directly?",
       desc: "Absolutely. Logged-in users can use the live chat widget in their dashboard for immediate assistance during business hours.",
     },
-    {
-      id: "",
-      title: "Where can I access API documentation?",
-      desc: "Our extensive developer documentation and API references can be found at docs.trimly.com or by clicking 'API Docs' in our footer.",
-    },
   ],
   social: [
-    { icon: faFacebook, label: "Facebook", link: "#" },
-    { icon: faLinkedinIn, label: "LinkedIn", link: "#" },
-    { icon: faGithub, label: "Instagram", link: "#" },
+    {
+      icon: faFacebook,
+      label: "Facebook",
+      link: "https://facebook.com/mash.en6",
+    },
+    {
+      icon: faLinkedinIn,
+      label: "LinkedIn",
+      link: "https://linkedin.com/in/mashrafidevs",
+    },
+    {
+      icon: faGithub,
+      label: "GitHub",
+      link: "https://github.com/mashrafimahin",
+    },
+    {
+      icon: faDiscord,
+      label: "Discord",
+      link: "https://discord.gg/qCxKht83",
+    },
   ],
 };

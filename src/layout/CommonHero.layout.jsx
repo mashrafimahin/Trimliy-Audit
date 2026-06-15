@@ -49,9 +49,12 @@ function CommonHero({
           </Header>
           <Paragraph variant={"large"}>{headerDescription}</Paragraph>
           {/* actions */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col min-[350px]:flex-row items-center justify-center gap-4">
             {buttonOne && (
-              <Button onClick={() => handleClick(buttonOneLink)}>
+              <Button
+                onClick={() => handleClick(buttonOneLink)}
+                className={"w-auto"}
+              >
                 {buttonOne}
               </Button>
             )}
@@ -59,6 +62,7 @@ function CommonHero({
               <Button
                 variant={"regular"}
                 onClick={() => handleClick(buttonTwoLink)}
+                className={"w-auto"}
               >
                 {buttonTwo}
               </Button>

@@ -36,7 +36,7 @@ function Navbar() {
               <Link2 className="text-white w-5 h-5" />
             </div>
             <span className="text-xl sm:text-2xl font-bold tracking-tight text-white hidden sm:inline">
-              Trimly
+              Trimliy
             </span>
           </Link>
 

@@ -13,7 +13,7 @@ function Footer() {
         <div className="col-span-2">
           <div className="flex items-center gap-3 mb-2">
             <Link2 className="text-blue-500 w-6 h-6" />
-            <span className="text-2xl font-bold text-white">Trimly</span>
+            <span className="text-2xl font-bold text-white">Trimliy</span>
           </div>
           <p className="text-slate-400 text-sm mb-6 max-w-sm">
             {data.logo.bio}
@@ -38,7 +38,7 @@ function Footer() {
       </div>
       {/* copyrights */}
       <p className="mt-20 text-center text-sm text-slate-500 w-full">
-        &copy; {new Date().getFullYear()} - Trimly. All Rights Reserved.
+        &copy; {new Date().getFullYear()} - Trimliy. All Rights Reserved.
       </p>
     </footer>
   );

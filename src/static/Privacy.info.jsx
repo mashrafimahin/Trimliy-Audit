@@ -12,7 +12,7 @@ import {
 
 // data
 export const info = {
-  title: ["Privacy & Data Protection at", " Trimly"],
+  title: ["Privacy & Data Protection at", " Trimliy"],
   description:
     "We value your privacy, transparency, and data security while providing smart URL shortening and analytics services. Your trust is our priority.",
   lastUpdate: "May 30, 2026",
@@ -117,5 +117,5 @@ export const info = {
     "Manage cookie preferences",
     "Control communication settings",
   ],
-  mail: "mailto:mail@example.com",
+  mail: "mailto:trimly.net@gmail.com",
 };

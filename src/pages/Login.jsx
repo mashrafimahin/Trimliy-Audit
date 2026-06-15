@@ -79,7 +79,7 @@ function Login() {
             <div className="w-20 h-20 rounded-2xl bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center mx-auto mb-8 shadow-2xl shadow-blue-500/30">
               <Link2 className="text-white w-10 h-10" />
             </div>
-            <Header variant={"h3"}>Welcome back to Trimly</Header>
+            <Header variant={"h3"}>Welcome back to Trimliy</Header>
             <Paragraph variant={"small"}>
               Manage your links, track analytics, and optimize your campaigns in
               one powerful dashboard.
