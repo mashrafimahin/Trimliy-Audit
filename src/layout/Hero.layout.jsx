@@ -1,4 +1,6 @@
 // icons
+import { useState } from "react";
+import { useNavigate } from "react-router";
 import { Link2, ArrowRight } from "lucide-react";
 // components
 import Input from "../components/Input";
@@ -9,6 +11,21 @@ import Paragraph from "../typography/Paragraph";
 
 // main
 function Hero() {
+  // navigation
+  const navigate = useNavigate();
+  // state
+  const [redirecting, setRedirecting] = useState(false);
+
+  // handle click
+  const handleClick = () => {
+    setTimeout(() => {
+      setRedirecting(true);
+    }, 400);
+    setTimeout(() => {
+      navigate("signup");
+    }, 1800);
+  };
+
   return (
     <section className="pt-20 pb-20 px-6 relative">
       <div className="container mx-auto max-w-6xl text-center z-10 relative">
@@ -34,12 +51,18 @@ function Hero() {
               <Input
                 placeholder={"Paste your long URL here..."}
                 className={"pl-12"}
+                required
               />
             </div>
-            <Button>
+            <Button type={"submit"} onClick={handleClick}>
               Shorten URL <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </div>
+          {redirecting && (
+            <p className="p-2 font-bold text-white text-md lg:text-xl">
+              You need to register before creating link. Page redirecting ...
+            </p>
+          )}
         </div>
 
         {/* Abstract Dashboard Preview */}
