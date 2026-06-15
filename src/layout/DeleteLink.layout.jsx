@@ -53,7 +53,7 @@ const DeleteLinkLayout = () => {
         <Button
           variant={"regular"}
           onClick={handlePopup}
-          className={cn("p-2", timer && "cursor-no-drop")}
+          className={cn("p-2 w-auto", timer && "cursor-no-drop")}
           disabled={timer}
         >
           <X className="w-5 h-5" />
@@ -101,7 +101,7 @@ const DeleteLinkLayout = () => {
         <Button
           variant={"regular"}
           onClick={handlePopup}
-          className={cn("flex-1", timer && "cursor-no-drop")}
+          className={cn("flex-1 w-auto", timer && "cursor-no-drop")}
           disabled={timer}
         >
           Cancel
@@ -109,7 +109,7 @@ const DeleteLinkLayout = () => {
         <Button
           variant={"danger"}
           className={cn(
-            "flex-1 gap-2 bg-red-500",
+            "flex-1 gap-2 bg-red-500 w-auto",
             timer && "bg-red-500/20 cursor-no-drop",
           )}
           onClick={handleDelete}

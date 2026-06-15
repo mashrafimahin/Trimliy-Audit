@@ -63,7 +63,11 @@ const CreateLinkLayout = () => {
             </Paragraph>
           </div>
         </div>
-        <Button variant={"regular"} className={"p-2"} onClick={handlePopup}>
+        <Button
+          variant={"regular"}
+          className={"p-2 w-auto"}
+          onClick={handlePopup}
+        >
           <X className="w-5 h-5" />
         </Button>
       </div>
@@ -138,7 +142,9 @@ const CreateLinkLayout = () => {
           ) : (
             "-"
           )}
-          <Button type="submit">Create Link</Button>
+          <Button type="submit" className={"w-auto"}>
+            Create Link
+          </Button>
         </div>
       </form>
     </div>

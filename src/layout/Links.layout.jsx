@@ -30,7 +30,7 @@ const Links = () => {
             Manage, edit, and track your shortened URLs.
           </Paragraph>
         </div>
-        <Button onClick={handlePopup}>
+        <Button onClick={handlePopup} className={"w-full sm:w-auto"}>
           <Plus className="w-5 h-5 mr-2" /> Create New
         </Button>
       </div>

@@ -67,13 +67,13 @@ const Overview = () => {
             Welcome back, here's what's happening with your links today.
           </Paragraph>
         </div>
-        <Button onClick={handlePopup}>
+        <Button onClick={handlePopup} className={"w-auto"}>
           <Link2 className="w-4 h-4 mr-2" /> Create Link
         </Button>
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         {info.stats.map((stat, i) => (
           <div key={i}>
             <div className="transition-colors">
@@ -98,7 +98,7 @@ const Overview = () => {
         {/* Main Chart */}
         <div className="lg:col-span-2 p-0 overflow-hidden flex flex-col">
           {/* chart header */}
-          <div className="p-6 border-b border-white/5 flex items-center justify-between">
+          <div className="lg:p-6 border-b border-white/5 flex items-center justify-between">
             {/* chart header */}
             <div>
               <Header variant={"h3"} className={"text-2xl"}>
@@ -110,15 +110,15 @@ const Overview = () => {
             </div>
           </div>
           {/* chart view */}
-          <div className="h-75 p-6 pb-2 w-full">
+          <div className="h-75 lg:p-6 pb-2 w-full">
             <Chart data={info.chartData} />
           </div>
         </div>
 
         {/* Top Devices */}
-        <div className="flex flex-col p-0">
+        <div className="flex flex-col">
           {/* header */}
-          <div className="p-6 border-b border-white/5">
+          <div className="lg:p-6 border-b border-white/5">
             <Header variant={"h3"} className={"text-2xl"}>
               Top Devices
             </Header>
@@ -155,7 +155,7 @@ const Overview = () => {
       {/* Recent Links */}
       <div className="p-0 overflow-hidden">
         {/* header */}
-        <div className="p-6 border-b border-white/5 flex items-center justify-between">
+        <div className="lg:p-6 border-b border-white/5 flex items-center justify-between">
           <Header variant={"h3"} className={"text-2xl"}>
             Recent Links
           </Header>

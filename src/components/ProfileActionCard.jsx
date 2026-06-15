@@ -56,10 +56,10 @@ const ProfileActionCard = () => {
   };
 
   return (
-    <div className="p-6 md:p-8">
+    <div className="md:p-8">
       <Header variant={"h3"}>Profile Settings</Header>
 
-      <div className="flex items-center gap-6 mb-8">
+      <div className="flex flex-col sm:flex-row items-center gap-6 mb-8 mt-4 sm:mt-0">
         {/* profile photo */}
         <div className="relative">
           <img
@@ -160,24 +160,28 @@ const ProfileActionCard = () => {
             </p>
           )}
           {data.profile.settings.editing ? (
-            <div className="flex gap-4">
+            <div className="flex gap-1 md:4">
               <Button
                 className={cn(
                   "bg-red-700",
-                  data.updatingUser ? "cursor-no-drop" : "",
+                  data.updatingUser ? "cursor-no-drop w-auto" : "w-auto",
                 )}
                 onClick={handleClick}
                 disabled={data.updatingUser}
               >
                 Cancel
               </Button>
-              <Button onClick={saveChanges}>Save Changes</Button>
+              <Button onClick={saveChanges} className={"w-auto"}>
+                Save Changes
+              </Button>
             </div>
           ) : (
             <Button
               onClick={handleClick}
               disabled={data.updatingUser}
-              className={cn(data.updatingUser ? "cursor-no-drop" : "")}
+              className={cn(
+                data.updatingUser ? "cursor-no-drop sm:w-auto" : "sm:w-auto",
+              )}
             >
               <PenBoxIcon size={15} className="mr-2" />
               Edit

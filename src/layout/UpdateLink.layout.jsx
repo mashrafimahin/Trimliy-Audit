@@ -62,7 +62,11 @@ const UpdateLinkLayout = () => {
             </Paragraph>
           </div>
         </div>
-        <Button variant={"regular"} className={"p-2"} onClick={handlePopup}>
+        <Button
+          variant={"regular"}
+          className={"p-2 w-auto"}
+          onClick={handlePopup}
+        >
           <X className="w-5 h-5" />
         </Button>
       </div>
@@ -147,7 +151,9 @@ const UpdateLinkLayout = () => {
           ) : (
             "-"
           )}
-          <Button type="submit">Update Link</Button>
+          <Button type="submit" className={"w-auto"}>
+            Update Link
+          </Button>
         </div>
       </form>
     </div>

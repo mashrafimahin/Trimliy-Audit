@@ -145,7 +145,7 @@ const ProfileSecurityAction = () => {
   }
 
   return (
-    <div className="p-6 md:p-8 space-y-8">
+    <div className="md:p-8 space-y-8">
       <Header variant={"h3"}>Security Settings</Header>
 
       {/* CHANGE PASSWORD SECTION */}

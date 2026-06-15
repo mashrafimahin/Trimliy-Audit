@@ -91,7 +91,7 @@ const Payment = () => {
                   </p>
                 </div>
               </div>
-              <Button>Edit</Button>
+              <Button className={"w-auto"}>Edit</Button>
             </div>
           </div>
           {/* payment history */}
@@ -106,7 +106,10 @@ const Payment = () => {
                 </div>
               ) : (
                 data.details.paymentHistory.map((invoice, i) => (
-                  <div key={i} className="flex items-center justify-between">
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 justify-between"
+                  >
                     <div>
                       <p className="text-sm font-medium text-white">
                         {invoice.date}
@@ -119,7 +122,7 @@ const Payment = () => {
                       <span className="text-sm font-medium text-white">
                         {invoice.amount}
                       </span>
-                      <Button variant={"regular"}>
+                      <Button variant={"regular"} className={"w-auto"}>
                         <Download size={14} />
                       </Button>
                     </div>
