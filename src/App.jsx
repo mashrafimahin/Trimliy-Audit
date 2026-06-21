@@ -21,6 +21,12 @@ function App() {
   // auth checkpoint
   const { data, dispatch } = useSlices("authControl");
 
+  // on audit
+  const handleAudit = async () => {
+    localStorage.setItem("user_id", import.meta.env.VITE_TEST_ID);
+    await dispatch(AuthThunk());
+  };
+
   // on mount
   useEffect(() => {
     dispatch(AuthThunk());
@@ -51,6 +57,15 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
           </Route>
         </Routes>
+        {/* test button */}
+        {!data.logged_in && (
+          <button
+            onClick={handleAudit}
+            className="fixed bottom-10 right-8 bg-amber-400 py-4 px-6 z-70 rounded-xl cursor-pointer text-black font-semibold"
+          >
+            Audit Mode
+          </button>
+        )}
       </Suspense>
     </>
   );
